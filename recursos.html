@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recursos de HEMA — Comunidad Argentina de HEMA</title>
+  <meta name="description" content="Lista de recursos online para practicantes de HEMA y esgrima histórica en Argentina: sitios web, canales de YouTube, fabricantes de equipo y más.">
+  <meta name="keywords" content="HEMA Argentina, recursos HEMA, esgrima histórica, canales YouTube HEMA, fabricantes espadas Argentina">
+  <meta name="author" content="Comunidad Argentina de HEMA">
+
+  <meta property="og:title" content="Recursos de HEMA — CADH">
+  <meta property="og:description" content="Lista de recursos online para practicantes de esgrima histórica en Argentina.">
+  <meta property="og:image" content="https://www.comunidadargentinadehema.com.ar/img/og-image.jpg">
+  <meta property="og:url" content="https://www.comunidadargentinadehema.com.ar/recursos.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-bg:            #0f0f13;
+      --color-text:          #e8e4f0;
+      --color-text-muted:    #9a94a8;
+      --color-text-footer:   #4e4a5a;
+      --color-accent:        #a07bff;
+      --color-accent-dark:   #7c5cbf;
+      --color-surface:       rgba(255, 255, 255, 0.03);
+      --color-border:        rgba(160, 120, 255, 0.12);
+      --color-border-accent: rgba(160, 120, 255, 0.30);
+      --font-display:        'Syne', sans-serif;
+      --font-body:           'DM Sans', sans-serif;
+      --max-width: 1100px;
+      --pad-x:     28px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-size: 15px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--pad-x);
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 12px;
+    }
+
+    /* ── NAVEGACIÓN ── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15, 15, 19, 0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+    .nav-logo-placeholder {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(160,120,255,0.12);
+      border: 1px solid var(--color-border-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .nav-logo-placeholder span {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 9px;
+      letter-spacing: 0.08em;
+      color: var(--color-accent);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover  { color: var(--color-text); }
+    .nav-links a.active { color: var(--color-accent); }
+    .nav-links .nav-cta a {
+      color: var(--color-accent);
+      border: 1px solid var(--color-border-accent);
+      border-radius: 6px;
+      padding: 5px 12px;
+    }
+    .nav-links .nav-cta a:hover { background: rgba(160,120,255,0.08); }
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block;
+      height: 1.5px;
+      background: var(--color-text);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .nav-mobile {
+      display: none;
+      flex-direction: column;
+      border-top: 1px solid var(--color-border);
+      padding: 16px var(--pad-x) 20px;
+      gap: 4px;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      transition: color 0.2s;
+    }
+    .nav-mobile a:hover  { color: var(--color-text); }
+    .nav-mobile a.active { color: var(--color-accent); }
+    .nav-mobile a.mobile-cta {
+      color: var(--color-accent);
+      font-weight: 500;
+      border-bottom: none;
+      margin-top: 8px;
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 52px 0 40px;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .page-header h1 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: #fff;
+      max-width: 600px;
+      margin-bottom: 16px;
+    }
+    .page-header h1 em { font-style: normal; color: var(--color-accent); }
+    .page-header p {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--color-text-muted);
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    /* ── LAYOUT ── */
+    .content-layout {
+      display: grid;
+      grid-template-columns: 1fr 260px;
+      gap: 56px;
+      padding: 52px 0 80px;
+      align-items: start;
+    }
+
+    /* ── SECCIÓN DE RECURSOS ── */
+    .recursos-section {
+      margin-bottom: 52px;
+    }
+    .recursos-section:last-child { margin-bottom: 0; }
+
+    .recursos-section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .recursos-section-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      background: rgba(160,120,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      flex-shrink: 0;
+    }
+
+    .recursos-section-header h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 20px;
+      color: #fff;
+    }
+
+    .recursos-section-header .count {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--color-accent);
+      background: rgba(160,120,255,0.1);
+      border: 1px solid var(--color-border-accent);
+      border-radius: 100px;
+      padding: 2px 10px;
+      margin-left: 4px;
+    }
+
+    /* Grid de recursos */
+    .recursos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 10px;
+    }
+
+    /* Card individual de recurso */
+    .recurso-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      padding: 16px;
+      transition: border-color 0.2s, background 0.2s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .recurso-card:hover {
+      border-color: var(--color-border-accent);
+      background: rgba(160,120,255,0.04);
+    }
+
+    .recurso-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .recurso-nombre {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--color-text);
+      line-height: 1.3;
+    }
+
+    .recurso-link-icon {
+      color: var(--color-accent);
+      opacity: 0.6;
+      flex-shrink: 0;
+      margin-top: 2px;
+      transition: opacity 0.2s;
+    }
+    .recurso-card:hover .recurso-link-icon { opacity: 1; }
+
+    .recurso-desc {
+      font-size: 12px;
+      color: var(--color-text-muted);
+      line-height: 1.55;
+      flex: 1;
+      margin-bottom: 12px;
+    }
+
+    .recurso-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .recurso-idioma {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 100px;
+      padding: 2px 9px;
+    }
+
+    .recurso-por {
+      font-size: 11px;
+      color: var(--color-text-footer);
+    }
+    .recurso-por span { color: var(--color-text-muted); }
+
+    /* Card de recurso sin link (ej: archivos 3D) */
+    .recurso-card.no-link {
+      cursor: default;
+    }
+    .recurso-card.no-link:hover {
+      border-color: var(--color-border);
+      background: var(--color-surface);
+    }
+
+    /* Nota de sección vacía */
+    .section-placeholder {
+      background: var(--color-surface);
+      border: 1px dashed var(--color-border);
+      border-radius: 10px;
+      padding: 24px;
+      text-align: center;
+      color: var(--color-text-footer);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .sidebar-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      padding: 20px;
+    }
+    .sidebar-card h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 14px;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .sidebar-card p {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .sidebar-nav a {
+      font-size: 12px;
+      color: var(--color-text-muted);
+      padding: 7px 10px;
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .sidebar-nav a:hover {
+      color: var(--color-accent);
+      background: rgba(160,120,255,0.06);
+    }
+
+    .suggest-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-accent);
+      background: rgba(160,120,255,0.08);
+      border: 1px solid var(--color-border-accent);
+      border-radius: 8px;
+      padding: 10px 16px;
+      width: 100%;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .suggest-link:hover { background: rgba(160,120,255,0.14); }
+
+    /* ── FOOTER ── */
+    .footer {
+      padding: 32px 0;
+      border-top: 1px solid var(--color-border);
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-brand {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--color-text-footer);
+    }
+    .footer-brand span { color: var(--color-accent); opacity: 0.6; }
+    .footer-meta {
+      font-size: 11px;
+      color: var(--color-text-footer);
+      line-height: 1.6;
+      text-align: right;
+    }
+    .footer-meta a { color: var(--color-text-footer); transition: color 0.2s; }
+    .footer-meta a:hover { color: var(--color-text-muted); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .content-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 40px 0 60px;
+      }
+      .sidebar { position: relative; top: 0; }
+    }
+    @media (max-width: 768px) {
+      :root { --pad-x: 16px; }
+      .nav-links  { display: none; }
+      .nav-toggle { display: flex; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .footer-meta  { text-align: left; }
+    }
+    @media (max-width: 480px) {
+      .recursos-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVEGACIÓN -->
+  <header class="nav">
+    <div class="container">
+      <nav class="nav-inner">
+        <a href="index.html" class="nav-logo" aria-label="Comunidad Argentina de HEMA">
+            <div class="nav-logo-placeholder"><span>CADH</span></div>
+          </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="hemapa.html">HEMAPA</a></li>
+          <li><a href="recursos.html" class="active">Recursos</a></li>
+          <li><a href="convivencia.html">Convivencia</a></li>
+          <li><a href="sobre-cadh.html">Más sobre CADH</a></li>
+          <li><a href="campamento.html">Campamento</a></li>
+          <li class="nav-cta"><a href="https://chat.whatsapp.com/J8FOacdq1g0GMBEtuvFxuf" target="_blank" rel="noopener">Sumate</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
+    </div>
+    <nav class="nav-mobile" id="navMobile" aria-label="Menú mobile">
+      <a href="index.html">Inicio</a>
+      <a href="hemapa.html">HEMAPA</a>
+      <a href="recursos.html" class="active">Recursos</a>
+      <a href="convivencia.html">Convivencia</a>
+      <a href="sobre-cadh.html">Más sobre CADH</a>
+      <a href="campamento.html">Campamento</a>
+      <a href="https://chat.whatsapp.com/J8FOacdq1g0GMBEtuvFxuf" target="_blank" rel="noopener" class="mobile-cta">Sumate al WhatsApp →</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <div class="page-header">
+      <div class="container">
+        <p class="section-label">Recursos</p>
+        <h1>Recursos para <em>esgrimistas históricos</em></h1>
+        <p>Una lista colaborativa de sitios, canales, fabricantes y materiales recomendados por la comunidad. Si conocés algo para agregar, contanos en la CADH.</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="content-layout">
+        <div class="main-content" id="recursos-container">
+          <!-- El contenido se genera desde el bloque de datos de abajo -->
+        </div>
+
+        <aside class="sidebar">
+          <div class="sidebar-card">
+            <h3>Secciones</h3>
+            <nav class="sidebar-nav" id="sidebar-nav">
+              <!-- Se genera automáticamente -->
+            </nav>
+          </div>
+          <div class="sidebar-card">
+            <h3>¿Conocés un recurso?</h3>
+            <p>Si querés sugerir algo para agregar a esta lista, contanos en la comunidad.</p>
+            <a href="https://chat.whatsapp.com/J8FOacdq1g0GMBEtuvFxuf" target="_blank" rel="noopener" class="suggest-link">
+              Sugerir un recurso
+            </a>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">Comunidad Argentina de <span>HEMA</span> · CADH</div>
+        <div class="footer-meta">
+          <a href="mailto:comunidadargentinadehema@gmail.com">comunidadargentinadehema@gmail.com</a><br>
+          Un proyecto colaborativo · Argentina · 2024
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // =====================================================================
+    //  DATOS DE RECURSOS — EDITÁ SOLO ESTA SECCIÓN PARA AGREGAR O QUITAR
+    // =====================================================================
+    //
+    //  Cada sección tiene:
+    //    id:     identificador único (sin espacios, sin acentos)
+    //    icon:   emoji que aparece en el título
+    //    titulo: nombre de la sección
+    //    items:  array de recursos
+    //
+    //  Cada recurso tiene:
+    //    nombre:  nombre del sitio o canal             (OBLIGATORIO)
+    //    url:     link completo con https://           (OBLIGATORIO — ponés "#" si no tenés el link)
+    //    desc:    descripción breve                    (OBLIGATORIO)
+    //    idioma:  "Español", "Inglés", "Bilingüe"     (OBLIGATORIO)
+    //    por:     quién lo recomendó                  (OBLIGATORIO)
+    //
+    //  Para agregar un recurso nuevo: copiás un bloque { } dentro del array
+    //  de la sección que corresponda, completás los campos y guardás.
+    //  Para agregar una sección nueva: copiás todo un bloque { id, icon, titulo, items }
+    //  al final del array RECURSOS, antes del punto y coma.
+    //
+    // =====================================================================
+
+    const RECURSOS = [
+
+      // ------------------------------------------------------------------
+      // SECCIÓN 1: SITIOS WEB
+      // ------------------------------------------------------------------
+      {
+        id: "sitios-web",
+        icon: "🌐",
+        titulo: "Sitios web",
+        items: [
+          {
+            nombre:  "Wiktenauer",
+            url:     "https://wiktenauer.com",
+            desc:    "La Wikipedia de los manuscritos históricos. La colección de escaneos de tratados de esgrima más grande de internet.",
+            idioma:  "Inglés",
+            por:     "admin"
+          },
+          {
+            nombre:  "Treatise Database",
+            url:     "https://www.treatisedatabase.com",
+            desc:    "Base de datos con gran variedad de tratados y manuales, incluyendo muchos más modernos que no están en Wiktenauer.",
+            idioma:  "Inglés",
+            por:     "admin"
+          },
+          {
+            nombre:  "HROARR",
+            url:     "https://hroarr.com",
+            desc:    "Blog con mucha información técnica e histórica sobre HEMA. Un poco viejo y lento, pero muy valioso.",
+            idioma:  "Inglés",
+            por:     "admin"
+          },
+          {
+            nombre:  "Sword STEM",
+            url:     "https://swordstem.com",
+            desc:    "Blog sobre ciencia aplicada al uso de la espada. Análisis biomecánicos y físicos muy interesantes.",
+            idioma:  "Inglés",
+            por:     "admin"
+          },
+          {
+            nombre:  "Sala de Armas",
+            url:     "#",
+            desc:    "Blog en español de Julio Núñez, instructor de Sala Arequipa, Perú. Buen contenido técnico en castellano.",
+            idioma:  "Español",
+            por:     "Julio Núñez"
+          },
+          {
+            nombre:  "Academia Vincere",
+            url:     "#",
+            desc:    "Blog en español de Academia Vincere de CABA. Artículos técnicos y de difusión.",
+            idioma:  "Español",
+            por:     "admin"
+          }
+        ]
+      },
+
+      // ------------------------------------------------------------------
+      // SECCIÓN 2: CANALES DE YOUTUBE
+      // ------------------------------------------------------------------
+      {
+        id: "youtube",
+        icon: "▶️",
+        titulo: "Canales de YouTube",
+        items: [
+          {
+            nombre:  "False Edge",
+            url:     "https://www.youtube.com/@FalseEdge",
+            desc:    "Canal de Josh Dale, gran esgrimista e instructor estadounidense que apoyó a la CADH desde el inicio.",
+            idioma:  "Inglés",
+            por:     "admin"
+          },
+          {
+            nombre:  "Robin Swords",
+            url:     "https://www.youtube.com/@RobinSwords",
+            desc:    "Contenido variado sobre tópicos de HEMA, historia y distintas armas.",
+            idioma:  "Inglés",
+            por:     "admin"
+          },
+          {
+            nombre:  "Ritterschaft HEMA",
+            url:     "#",
+            desc:    "Canal del grupo homónimo de México. Variado contenido en español.",
+            idioma:  "Español",
+            por:     "admin"
+          },
+          {
+            nombre:  "Federico Malagutti HEMA",
+            url:     "#",
+            desc:    "Instructor italiano con variado contenido técnico sobre la tradición italiana.",
+            idioma:  "Inglés",
+            por:     "admin"
+          },
+          {
+            nombre:  "Daniel Pope",
+            url:     "#",
+            desc:    "Instructor australiano con contenido muy interesante sobre Meyer y sable.",
+            idioma:  "Inglés",
+            por:     "admin"
+          },
+          {
+            nombre:  "SuperiorHEMA",
+            url:     "#",
+            desc:    "Instructor canadiense con muy buen contenido técnico sobre diversos tópicos de HEMA.",
+            idioma:  "Inglés",
+            por:     "admin"
+          },
+          {
+            nombre:  "Lista Sword Games",
+            url:     "#",
+            desc:    "Lista de videos con juegos y ejercicios para aplicar conceptos específicos de HEMA.",
+            idioma:  "Inglés",
+            por:     "admin"
+          },
+          {
+            nombre:  "Academia Vincere",
+            url:     "#",
+            desc:    "Canal del club Academia Vincere con videos de sparrings y contenido de difusión.",
+            idioma:  "Español",
+            por:     "admin"
+          },
+          {
+            nombre:  "Björn Rüther",
+            url:     "#",
+            desc:    "Canal dedicado a la interpretación de las enseñanzas de Joachim Meyer.",
+            idioma:  "Inglés",
+            por:     "Javier de Freifechter Mendoza"
+          },
+          {
+            nombre:  "Virtual Fechtschule",
+            url:     "#",
+            desc:    "Canal dedicado al uso del messer.",
+            idioma:  "Inglés",
+            por:     "Facundo de Cruz del Sur"
+          },
+          {
+            nombre:  "Fencer's Edge",
+            url:     "#",
+            desc:    "Canal sobre técnica de esgrima deportiva muy aplicable a HEMA.",
+            idioma:  "Inglés",
+            por:     "Facundo de Cruz del Sur"
+          },
+          {
+            nombre:  "Rocket City HEMA",
+            url:     "#",
+            desc:    "Canal sobre KDF (Kunst des Fechtens).",
+            idioma:  "Inglés",
+            por:     "Facundo de Cruz del Sur"
+          },
+          {
+            nombre:  "Woody's Fencing Tips",
+            url:     "#",
+            desc:    "Canal sobre el uso de la ropera.",
+            idioma:  "Inglés",
+            por:     "Facundo de Cruz del Sur"
+          },
+          {
+            nombre:  "Mosh the Hokage of Melbourne",
+            url:     "#",
+            desc:    "Canal sobre el uso de la ropera.",
+            idioma:  "Inglés",
+            por:     "Facundo de Cruz del Sur"
+          },
+          {
+            nombre:  "Instructor Esko Ronimus",
+            url:     "#",
+            desc:    "Canal sobre la tradición boloñesa.",
+            idioma:  "Inglés",
+            por:     "Facundo de Cruz del Sur"
+          },
+          {
+            nombre:  "Palestrita",
+            url:     "#",
+            desc:    "Canal sobre la tradición boloñesa.",
+            idioma:  "Español",
+            por:     "Facundo de Cruz del Sur"
+          },
+          {
+            nombre:  "Holtfreter Labs",
+            url:     "#",
+            desc:    "Canal sobre Fiore dei Liberi y combate armado.",
+            idioma:  "Inglés",
+            por:     "Facundo de Cruz del Sur"
+          },
+          {
+            nombre:  "Nova Combat Arts",
+            url:     "#",
+            desc:    "Canal sobre HEMA en general.",
+            idioma:  "Inglés",
+            por:     "Facundo de Cruz del Sur"
+          },
+          {
+            nombre:  "SwordMastery",
+            url:     "#",
+            desc:    "Canal sobre HEMA en general.",
+            idioma:  "Inglés",
+            por:     "Facundo de Cruz del Sur"
+          },
+          {
+            nombre:  "Petriczek",
+            url:     "#",
+            desc:    "Canal sobre HEMA en general.",
+            idioma:  "Inglés",
+            por:     "Facundo de Cruz del Sur"
+          },
+          {
+            nombre:  "The Exiles",
+            url:     "#",
+            desc:    "Canal sobre HEMA en general.",
+            idioma:  "Inglés",
+            por:     "Facundo de Cruz del Sur"
+          },
+          {
+            nombre:  "Círculo de Esgrima Histórica Cruz del Sur",
+            url:     "#",
+            desc:    "Canal del club Cruz del Sur de La Plata, Buenos Aires.",
+            idioma:  "Español",
+            por:     "Facundo de Cruz del Sur"
+          }
+        ]
+      },
+
+      // ------------------------------------------------------------------
+      // SECCIÓN 3: EQUIPO Y SIMULADORES
+      // ------------------------------------------------------------------
+      {
+        id: "equipo",
+        icon: "⚙️",
+        titulo: "Equipo y simuladores",
+        items: [
+          {
+            nombre:  "Guarniciones para espada larga — impresión 3D",
+            url:     "#",
+            desc:    "Archivos para imprimir guarniciones en 3D. La guarda calza en un caño de 20mm; otras piezas pueden necesitar lijado. NO APTO PARA SPARRING. Ideal para tener la tactilidad real de la empuñadura y entrenar en casa.",
+            idioma:  "—",
+            por:     "admin"
+          }
+        ]
+      },
+
+      // ------------------------------------------------------------------
+      // SECCIÓN 4: FABRICANTES DE EQUIPAMIENTO
+      // ------------------------------------------------------------------
+      {
+        id: "fabricantes",
+        icon: "🔨",
+        titulo: "Fabricantes de equipamiento",
+        items: [
+          {
+            nombre:  "CC Espadas",
+            url:     "https://www.instagram.com/ccespadas",
+            desc:    "Cuenta de Instagram del espadero argentino Leonardo Daneluz.",
+            idioma:  "Español",
+            por:     "admin"
+          },
+          {
+            nombre:  "Forja Fontenla",
+            url:     "#",
+            desc:    "Los hermanos Fontenla, grandes espaderos argentinos.",
+            idioma:  "Español",
+            por:     "admin"
+          },
+          {
+            nombre:  "Zbrun Espadas",
+            url:     "#",
+            desc:    "Juanchi Zbrun, espadero de Santa Fe.",
+            idioma:  "Español",
+            por:     "admin"
+          },
+          {
+            nombre:  "La Forja Soft",
+            url:     "#",
+            desc:    "Fabricante de simuladores blandos tipo boffer con modelos específicos para HEMA.",
+            idioma:  "Español",
+            por:     "admin"
+          },
+          {
+            nombre:  "Armería Vincere",
+            url:     "#",
+            desc:    "Fabricantes de simuladores de acero para la práctica de HEMA.",
+            idioma:  "Español",
+            por:     "admin"
+          }
+        ]
+      },
+
+      // ------------------------------------------------------------------
+      // SECCIÓN 5: OTROS RECURSOS
+      // Agregá acá lo que no entre en las categorías anteriores.
+      // También podés crear una sección nueva copiando el bloque de arriba.
+      // ------------------------------------------------------------------
+      {
+        id: "otros",
+        icon: "📌",
+        titulo: "Otros recursos",
+        items: [
+          // Por ahora vacío — se muestra un mensaje de invitación.
+          // Para agregar: copiás un bloque { nombre, url, desc, idioma, por }
+          // y lo pegás acá.
+        ]
+      }
+
+    ]; // <-- FIN DE LOS DATOS. No borres este punto y coma.
+
+    // =====================================================================
+    //  GENERADOR DE HTML — no hace falta editar nada de acá para abajo
+    // =====================================================================
+
+    const container   = document.getElementById('recursos-container');
+    const sidebarNav  = document.getElementById('sidebar-nav');
+
+    // SVG de flecha externa (link icon)
+    const linkSVG = `<svg class="recurso-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`;
+
+    RECURSOS.forEach(seccion => {
+      // Sidebar nav item
+      const navA = document.createElement('a');
+      navA.href = '#' + seccion.id;
+      navA.textContent = seccion.titulo;
+      sidebarNav.appendChild(navA);
+
+      // Sección
+      const sec = document.createElement('div');
+      sec.className = 'recursos-section';
+      sec.id = seccion.id;
+
+      const count = seccion.items.length;
+      const countStr = count > 0 ? `<span class="count">${count}</span>` : '';
+
+      sec.innerHTML = `
+        <div class="recursos-section-header">
+          <div class="recursos-section-icon">${seccion.icon}</div>
+          <h2>${seccion.titulo} ${countStr}</h2>
+        </div>
+        <div class="recursos-grid" id="grid-${seccion.id}"></div>
+      `;
+      container.appendChild(sec);
+
+      const grid = sec.querySelector('.recursos-grid');
+
+      if (count === 0) {
+        // Sección vacía
+        grid.innerHTML = `
+          <div class="section-placeholder" style="grid-column: 1 / -1;">
+            Esta sección todavía no tiene recursos. ¿Conocés algo para sugerir?
+          </div>`;
+        return;
+      }
+
+      seccion.items.forEach(item => {
+        const sinLink = !item.url || item.url === '#';
+        const card = document.createElement(sinLink ? 'div' : 'a');
+
+        if (!sinLink) {
+          card.href   = item.url;
+          card.target = '_blank';
+          card.rel    = 'noopener noreferrer';
+        }
+
+        card.className = 'recurso-card' + (sinLink ? ' no-link' : '');
+        card.innerHTML = `
+          <div class="recurso-card-top">
+            <div class="recurso-nombre">${item.nombre}</div>
+            ${sinLink ? '' : linkSVG}
+          </div>
+          <div class="recurso-desc">${item.desc}</div>
+          <div class="recurso-footer">
+            <span class="recurso-idioma">${item.idioma}</span>
+            <span class="recurso-por">por <span>${item.por}</span></span>
+          </div>`;
+        grid.appendChild(card);
+      });
+    });
+
+    // Menú hamburger
+    const toggle = document.getElementById('navToggle');
+    const mobile = document.getElementById('navMobile');
+    toggle.addEventListener('click', () => {
+      const open = mobile.classList.toggle('open');
+      toggle.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open);
+    });
+  </script>
+
+</body>
+</html>

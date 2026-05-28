@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comunidad Argentina de HEMA — CADH</title>
+  <meta name="description" content="La Comunidad Argentina de HEMA (CADH) conecta a todos los interesados en la esgrima histórica de Argentina. Encontrá clubes, practicantes e instructores cerca tuyo.">
+  <meta name="keywords" content="HEMA Argentina, esgrima histórica Argentina, clubes HEMA, esgrima medieval Argentina">
+  <meta name="author" content="Comunidad Argentina de HEMA">
+
+  <meta property="og:title" content="Comunidad Argentina de HEMA — CADH">
+  <meta property="og:description" content="Conectamos a todos los que practican o quieren practicar esgrima histórica en Argentina.">
+  <meta property="og:image" content="https://www.comunidadargentinadehema.com.ar/img/og-image.jpg">
+  <meta property="og:url" content="https://www.comunidadargentinadehema.com.ar">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Comunidad Argentina de HEMA — CADH">
+  <meta name="twitter:description" content="Conectamos a todos los que practican o quieren practicar esgrima histórica en Argentina.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-bg:            #0f0f13;
+      --color-text:          #e8e4f0;
+      --color-text-muted:    #9a94a8;
+      --color-text-footer:   #4e4a5a;
+      --color-accent:        #a07bff;
+      --color-accent-dark:   #7c5cbf;
+      --color-surface:       rgba(255, 255, 255, 0.03);
+      --color-border:        rgba(160, 120, 255, 0.12);
+      --color-border-accent: rgba(160, 120, 255, 0.30);
+      --font-display:        'Syne', sans-serif;
+      --font-body:           'DM Sans', sans-serif;
+      --space-xs:  4px;
+      --space-sm:  8px;
+      --space-md:  16px;
+      --space-lg:  24px;
+      --space-xl:  40px;
+      --space-2xl: 64px;
+      --max-width: 1100px;
+      --pad-x:     28px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-size: 15px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ── UTILIDADES ── */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--pad-x);
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 12px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      border: 1px solid var(--color-border-accent);
+      border-radius: 100px;
+      padding: 4px 14px;
+    }
+
+    .tag-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.25; }
+    }
+
+    /* ── BOTONES ── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--color-accent);
+      color: #0f0f13;
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: 0.02em;
+      padding: 11px 22px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-primary:hover  { background: #b892ff; }
+    .btn-primary:active { transform: scale(0.98); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 13px;
+      padding: 11px 22px;
+      border-radius: 8px;
+      border: 1px solid rgba(232, 228, 240, 0.2);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-secondary:hover { border-color: rgba(232,228,240,0.45); color: #fff; }
+
+    /* ── NAVEGACIÓN ── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15, 15, 19, 0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+
+    /* Logo SVG real — se muestra cuando img/logo-cadh.svg existe */
+    .nav-logo-img {
+      height: 36px;
+      width: 36px;
+      border-radius: 8px;
+      display: block;
+      object-fit: contain;
+    }
+
+    /* Placeholder cuadrado — se muestra mientras no hay logo SVG */
+    .nav-logo-placeholder {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(160,120,255,0.12);
+      border: 1px solid var(--color-border-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .nav-logo-placeholder span {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 9px;
+      letter-spacing: 0.08em;
+      color: var(--color-accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--color-text); }
+
+    .nav-links .nav-cta a {
+      color: var(--color-accent);
+      border: 1px solid var(--color-border-accent);
+      border-radius: 6px;
+      padding: 5px 12px;
+      letter-spacing: 0.04em;
+    }
+    .nav-links .nav-cta a:hover { background: rgba(160,120,255,0.08); }
+
+    /* Hamburger */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block;
+      height: 1.5px;
+      background: var(--color-text);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .nav-mobile {
+      display: none;
+      flex-direction: column;
+      border-top: 1px solid var(--color-border);
+      padding: 16px var(--pad-x) 20px;
+      gap: 4px;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--color-text-muted);
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      transition: color 0.2s;
+    }
+    .nav-mobile a:hover { color: var(--color-text); }
+    .nav-mobile a.mobile-cta {
+      color: var(--color-accent);
+      font-weight: 500;
+      border-bottom: none;
+      margin-top: 8px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--color-border);
+      overflow: hidden;
+    }
+
+    /* Slides de fondo */
+    .hero-slides {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      animation: heroFade 20s infinite;
+    }
+
+    /* Cada slide arranca en un momento distinto del ciclo de 20s */
+    /* Con 4 fotos: cada una dura 5s, 1s de fade entre ellas      */
+    .hero-slide:nth-child(1) { animation-delay:  0s; background-image: url('img/hero-1.jpg'); }
+    .hero-slide:nth-child(2) { animation-delay:  5s; background-image: url('img/hero-2.jpg'); }
+    .hero-slide:nth-child(3) { animation-delay: 10s; background-image: url('img/hero-3.jpg'); }
+    .hero-slide:nth-child(4) { animation-delay: 15s; background-image: url('img/hero-4.jpg'); }
+
+    @keyframes heroFade {
+      0%           { opacity: 0; }
+      5%           { opacity: 1; }   /* fade in rápido */
+      25%          { opacity: 1; }   /* se mantiene */
+      30%          { opacity: 0; }   /* fade out */
+      100%         { opacity: 0; }
+    }
+
+    /* Overlay: gradiente oscuro abajo y sutil arriba para legibilidad */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(to bottom,
+          rgba(15,15,19,0.45) 0%,
+          rgba(15,15,19,0.25) 40%,
+          rgba(15,15,19,0.70) 75%,
+          rgba(15,15,19,0.92) 100%
+        );
+    }
+
+    /* Contenido sobre el fondo */
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 100px 0 80px;
+      width: 100%;
+    }
+
+    .hero-tag { margin-bottom: 28px; }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(36px, 5.5vw, 60px);
+      line-height: 1.06;
+      letter-spacing: -0.02em;
+      color: #fff;
+      max-width: 680px;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--color-accent);
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(232,228,240,0.85);
+      max-width: 480px;
+      margin-bottom: 36px;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    /* Indicadores de slide (puntitos abajo) */
+    .hero-dots {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      gap: 8px;
+    }
+
+    .hero-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      animation: dotActive 20s infinite;
+    }
+
+    .hero-dot:nth-child(1) { animation-delay:  0s; }
+    .hero-dot:nth-child(2) { animation-delay:  5s; }
+    .hero-dot:nth-child(3) { animation-delay: 10s; }
+    .hero-dot:nth-child(4) { animation-delay: 15s; }
+
+    @keyframes dotActive {
+      0%   { background: rgba(160,120,255,0.9); width: 18px; border-radius: 4px; }
+      25%  { background: rgba(160,120,255,0.9); width: 18px; border-radius: 4px; }
+      30%  { background: rgba(255,255,255,0.3); width: 6px;  border-radius: 50%; }
+      100% { background: rgba(255,255,255,0.3); width: 6px;  border-radius: 50%; }
+    }
+
+    /* ── HEMAPA (sección destacada) ── */
+    .hemapa-section {
+      padding: var(--space-2xl) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .hemapa-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hemapa-content h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 28px;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .hemapa-content p {
+      font-size: 15px;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    .hemapa-content p strong {
+      color: var(--color-text);
+      font-weight: 500;
+    }
+
+    .hemapa-ctas {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .hemapa-map {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      aspect-ratio: 4/3;
+      background: var(--color-surface);
+    }
+
+    .hemapa-map iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: none;
+      filter: invert(90%) hue-rotate(180deg);
+    }
+
+    /* ── WHATSAPP ── */
+    .whatsapp-section {
+      padding: var(--space-2xl) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .whatsapp-header {
+      margin-bottom: 32px;
+    }
+
+    .whatsapp-header h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 28px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .whatsapp-header p {
+      font-size: 15px;
+      color: var(--color-text-muted);
+      max-width: 520px;
+    }
+
+    .grupos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .grupo-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      padding: 18px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .grupo-card:hover {
+      border-color: var(--color-border-accent);
+      background: rgba(160,120,255,0.04);
+    }
+
+    .grupo-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: rgba(160,120,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+      font-size: 16px;
+    }
+
+    .grupo-card h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--color-text);
+      margin-bottom: 5px;
+    }
+
+    .grupo-card p {
+      font-size: 12px;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+
+    /* ── REDES ── */
+    .redes-section {
+      padding: var(--space-xl) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .redes-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .redes-text h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 20px;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .redes-text p {
+      font-size: 14px;
+      color: var(--color-text-muted);
+    }
+
+    .redes-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .red-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--color-text-muted);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 9px 16px;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+    .red-btn:hover {
+      color: var(--color-text);
+      border-color: rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .red-btn svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      padding: 32px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--color-text-footer);
+    }
+    .footer-brand span { color: var(--color-accent); opacity: 0.6; }
+
+    .footer-meta {
+      font-size: 11px;
+      color: var(--color-text-footer);
+      line-height: 1.6;
+      text-align: right;
+    }
+
+    .footer-meta a {
+      color: var(--color-text-footer);
+      transition: color 0.2s;
+    }
+    .footer-meta a:hover { color: var(--color-text-muted); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      :root { --pad-x: 16px; }
+
+      .nav-links  { display: none; }
+      .nav-toggle { display: flex; }
+
+      .hero { min-height: 85vh; }
+      .hero-content { padding: 80px 0 60px; }
+
+      .hemapa-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .hemapa-map {
+        aspect-ratio: 4/3;
+        order: -1;
+      }
+
+      .grupos-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .redes-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-meta { text-align: left; }
+    }
+
+    @media (max-width: 480px) {
+      .grupos-grid { grid-template-columns: 1fr; }
+      .hero-ctas   { flex-direction: column; align-items: flex-start; }
+      .hemapa-ctas { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVEGACIÓN -->
+  <header class="nav">
+    <div class="container">
+      <nav class="nav-inner">
+        <a href="index.html" class="nav-logo" aria-label="Comunidad Argentina de HEMA">
+            <!-- Cuando tengas el logo SVG final, guardalo en img/logo-cadh.svg -->
+            <!-- El placeholder cuadrado se muestra hasta entonces            -->
+            <div class="nav-logo-placeholder">
+              <span>CADH</span>
+            </div>
+          </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="hemapa.html">HEMAPA</a></li>
+          <li><a href="recursos.html">Recursos</a></li>
+          <li><a href="convivencia.html">Convivencia</a></li>
+          <li><a href="sobre-cadh.html">Más sobre CADH</a></li>
+          <li><a href="campamento.html">Campamento</a></li>
+          <li class="nav-cta"><a href="https://chat.whatsapp.com/J8FOacdq1g0GMBEtuvFxuf" target="_blank" rel="noopener">Sumate</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
+    </div>
+    <nav class="nav-mobile" id="navMobile" aria-label="Menú mobile">
+      <a href="index.html">Inicio</a>
+      <a href="hemapa.html">HEMAPA</a>
+      <a href="recursos.html">Recursos</a>
+      <a href="convivencia.html">Convivencia</a>
+      <a href="sobre-cadh.html">Más sobre CADH</a>
+      <a href="campamento.html">Campamento</a>
+      <a href="https://chat.whatsapp.com/J8FOacdq1g0GMBEtuvFxuf" target="_blank" rel="noopener" class="mobile-cta">Sumate al WhatsApp →</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+
+      <!-- Imágenes de fondo rotativas -->
+      <!-- Reemplazá hero-1.jpg, hero-2.jpg, etc. con tus fotos en la carpeta img/ -->
+      <div class="hero-slides" aria-hidden="true">
+        <div class="hero-slide"></div>
+        <div class="hero-slide"></div>
+        <div class="hero-slide"></div>
+        <div class="hero-slide"></div>
+      </div>
+
+      <!-- Overlay de oscurecimiento -->
+      <div class="hero-overlay" aria-hidden="true"></div>
+
+      <!-- Contenido -->
+      <div class="hero-content">
+        <div class="container">
+          <div class="hero-tag">
+            <span class="tag">
+              <span class="tag-dot"></span>
+              Argentina · Desde 2024
+            </span>
+          </div>
+          <h1>La comunidad de <em>esgrima histórica</em> de Argentina</h1>
+          <p class="hero-sub">
+            La CADH conecta a practicantes, instructores, clubes y curiosos de HEMA en todo el país. Encontrá gente cerca tuyo, compartí recursos y sumate a la conversación.
+          </p>
+          <div class="hero-ctas">
+            <a href="https://chat.whatsapp.com/J8FOacdq1g0GMBEtuvFxuf" target="_blank" rel="noopener" class="btn-primary">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+              Sumate al WhatsApp
+            </a>
+            <a href="hemapa.html" class="btn-secondary">
+              Ver el HEMAPA
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Indicadores de slide -->
+      <div class="hero-dots" aria-hidden="true">
+        <span class="hero-dot"></span>
+        <span class="hero-dot"></span>
+        <span class="hero-dot"></span>
+        <span class="hero-dot"></span>
+      </div>
+
+    </section>
+
+    <!-- HEMAPA -->
+    <section class="hemapa-section">
+      <div class="container">
+        <div class="hemapa-grid">
+          <div class="hemapa-content">
+            <p class="section-label">HEMAPA</p>
+            <h2>Encontrá con quién practicar cerca tuyo</h2>
+            <p>
+              El <strong>HEMAPA</strong> es el mapa de practicantes de HEMA y esgrima histórica de Argentina. Clubes activos, practicantes solitarios y personas que quieren empezar — todo en un solo lugar.
+            </p>
+            <p>
+              Pensalo como un <strong>"Tinder" de la esgrima histórica</strong>: conectá con gente real, cerca tuyo, con las mismas ganas de practicar.
+            </p>
+            <p>
+              Registrarse es rápido: solo necesitás tu nombre, una ubicación de referencia y un medio de contacto.
+            </p>
+            <div class="hemapa-ctas">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSfUddRA02AiI-3MMwRQhoItD4dtpXo_jl9S77UoQwHRq2qmbg/viewform" target="_blank" rel="noopener" class="btn-primary">
+                Registrate en el HEMAPA
+              </a>
+              <a href="hemapa.html" class="btn-secondary">
+                Más sobre el HEMAPA
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="hemapa-map">
+            <iframe
+              src="https://www.google.com/maps/d/embed?mid=1_AvpM5jvLw0DBzeobhIhQE3C5WzpiR8"
+              title="HEMAPA — Mapa de practicantes de HEMA en Argentina"
+              loading="lazy"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHATSAPP -->
+    <section class="whatsapp-section">
+      <div class="container">
+        <div class="whatsapp-header">
+          <p class="section-label">La comunidad</p>
+          <h2>La CADH en WhatsApp</h2>
+          <p>El núcleo de la CADH es una Comunidad de WhatsApp con grupos para cada tema. Todos están invitados.</p>
+        </div>
+        <div class="grupos-grid">
+          <div class="grupo-card">
+            <div class="grupo-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#a07bff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <h3>Chat general</h3>
+            <p>Para charlar, compartir y debatir todo lo relacionado a HEMA.</p>
+          </div>
+          <div class="grupo-card">
+            <div class="grupo-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#a07bff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3>Practicantes de Argentina</h3>
+            <p>Grupo exclusivo para practicantes o interesados en practicar en Argentina.</p>
+          </div>
+          <div class="grupo-card">
+            <div class="grupo-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#a07bff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <h3>Instructores</h3>
+            <p>Conecta instructores de Argentina, Chile, Uruguay, Perú, Brasil, México, Colombia y España.</p>
+          </div>
+          <div class="grupo-card">
+            <div class="grupo-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#a07bff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" aria-hidden="true"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+            </div>
+            <h3>HEMARKET</h3>
+            <p>Compra y venta de equipamiento, libros y material relacionado a HEMA.</p>
+          </div>
+          <div class="grupo-card">
+            <div class="grupo-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#a07bff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            </div>
+            <h3>Herrería y espadería</h3>
+            <p>Todo sobre fabricación de espadas, con espaderos de nivel internacional.</p>
+          </div>
+        </div>
+        <a href="https://chat.whatsapp.com/J8FOacdq1g0GMBEtuvFxuf" target="_blank" rel="noopener" class="btn-primary">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          Sumate a la comunidad
+        </a>
+      </div>
+    </section>
+
+    <!-- REDES -->
+    <section class="redes-section">
+      <div class="container">
+        <div class="redes-inner">
+          <div class="redes-text">
+            <h2>Seguinos en redes</h2>
+            <p>Novedades, recursos y toda la actividad de la comunidad.</p>
+          </div>
+          <div class="redes-links">
+            <a href="https://www.instagram.com/comunidadargentinadehema" target="_blank" rel="noopener" class="red-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              Instagram
+            </a>
+            <a href="https://www.facebook.com/comunidadargentinadehema" target="_blank" rel="noopener" class="red-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              Facebook
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          Comunidad Argentina de <span>HEMA</span> · CADH
+        </div>
+        <div class="footer-meta">
+          <a href="mailto:comunidadargentinadehema@gmail.com">comunidadargentinadehema@gmail.com</a><br>
+          Un proyecto colaborativo · Argentina · 2024
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('navToggle');
+    const mobile = document.getElementById('navMobile');
+    toggle.addEventListener('click', () => {
+      const open = mobile.classList.toggle('open');
+      toggle.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open);
+    });
+  </script>
+
+</body>
+</html>

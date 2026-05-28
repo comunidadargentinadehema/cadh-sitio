@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campamento CADH — Comunidad Argentina de HEMA</title>
+  <meta name="description" content="El Campamento CADH es un encuentro abierto de esgrima histórica para toda la comunidad. Entrenamientos, sparring, talleres y camaradería.">
+  <meta name="keywords" content="Campamento HEMA Argentina, encuentro esgrima histórica, CADH evento">
+  <meta name="author" content="Comunidad Argentina de HEMA">
+
+  <meta property="og:title" content="Campamento CADH — Encuentro de Esgrima Histórica">
+  <meta property="og:description" content="Un fin de semana compartiendo entrenamientos, sparring, talleres y camaradería. Abierto para toda la comunidad.">
+  <meta property="og:image" content="https://www.comunidadargentinadehema.com.ar/img/og-image.jpg">
+  <meta property="og:url" content="https://www.comunidadargentinadehema.com.ar/campamento.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-bg:            #0f0f13;
+      --color-text:          #e8e4f0;
+      --color-text-muted:    #9a94a8;
+      --color-text-footer:   #4e4a5a;
+      --color-accent:        #a07bff;
+      --color-accent-dark:   #7c5cbf;
+      --color-surface:       rgba(255, 255, 255, 0.03);
+      --color-border:        rgba(160, 120, 255, 0.12);
+      --color-border-accent: rgba(160, 120, 255, 0.30);
+      --font-display:        'Syne', sans-serif;
+      --font-body:           'DM Sans', sans-serif;
+      --max-width: 1100px;
+      --pad-x:     28px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-size: 15px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--pad-x);
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 12px;
+    }
+
+    /* ── BOTONES ── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--color-accent);
+      color: #0f0f13;
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: 0.02em;
+      padding: 11px 22px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-primary:hover  { background: #b892ff; }
+    .btn-primary:active { transform: scale(0.98); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 13px;
+      padding: 11px 22px;
+      border-radius: 8px;
+      border: 1px solid rgba(232, 228, 240, 0.2);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-secondary:hover { border-color: rgba(232,228,240,0.45); color: #fff; }
+
+    /* ── NAVEGACIÓN ── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15, 15, 19, 0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+    .nav-logo-placeholder {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(160,120,255,0.12);
+      border: 1px solid var(--color-border-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .nav-logo-placeholder span {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 9px;
+      letter-spacing: 0.08em;
+      color: var(--color-accent);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover  { color: var(--color-text); }
+    .nav-links a.active { color: var(--color-accent); }
+    .nav-links .nav-cta a {
+      color: var(--color-accent);
+      border: 1px solid var(--color-border-accent);
+      border-radius: 6px;
+      padding: 5px 12px;
+    }
+    .nav-links .nav-cta a:hover { background: rgba(160,120,255,0.08); }
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block;
+      height: 1.5px;
+      background: var(--color-text);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .nav-mobile {
+      display: none;
+      flex-direction: column;
+      border-top: 1px solid var(--color-border);
+      padding: 16px var(--pad-x) 20px;
+      gap: 4px;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      transition: color 0.2s;
+    }
+    .nav-mobile a:hover  { color: var(--color-text); }
+    .nav-mobile a.active { color: var(--color-accent); }
+    .nav-mobile a.mobile-cta {
+      color: var(--color-accent);
+      font-weight: 500;
+      border-bottom: none;
+      margin-top: 8px;
+    }
+
+    /* ── HERO DEL CAMPAMENTO ── */
+    .camp-hero {
+      padding: 60px 0 52px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .camp-hero-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .camp-edition-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      border: 1px solid var(--color-border-accent);
+      border-radius: 100px;
+      padding: 4px 14px;
+      margin-bottom: 24px;
+    }
+
+    .camp-hero h1 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(28px, 4.5vw, 48px);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .camp-hero h1 em {
+      font-style: normal;
+      color: var(--color-accent);
+    }
+
+    .camp-hero-desc {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--color-text-muted);
+      max-width: 520px;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .camp-hero-ctas {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* Logo del campamento */
+    .camp-logo-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .camp-logo-img {
+      width: 220px;
+      height: auto;
+      opacity: 0.95;
+    }
+
+    /* ── LAYOUT PRINCIPAL ── */
+    .content-layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 56px;
+      padding: 52px 0 80px;
+      align-items: start;
+    }
+
+    /* ── SECCIONES ── */
+    .camp-section {
+      margin-bottom: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .camp-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .camp-section h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 20px;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .camp-section p {
+      font-size: 15px;
+      color: var(--color-text-muted);
+      line-height: 1.75;
+      margin-bottom: 12px;
+    }
+    .camp-section p:last-child { margin-bottom: 0; }
+    .camp-section strong { color: var(--color-text); font-weight: 500; }
+
+    /* Cronograma */
+    .cronograma {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .crono-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      position: relative;
+    }
+
+    .crono-item::before {
+      content: '';
+      position: absolute;
+      left: 46px;
+      top: 28px;
+      bottom: -4px;
+      width: 1px;
+      background: var(--color-border);
+    }
+    .crono-item:last-child::before { display: none; }
+
+    .crono-hora {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 12px;
+      color: var(--color-accent);
+      width: 52px;
+      flex-shrink: 0;
+      padding-top: 14px;
+      text-align: right;
+      letter-spacing: 0.03em;
+    }
+
+    .crono-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 2px solid var(--color-accent);
+      background: var(--color-bg);
+      flex-shrink: 0;
+      margin-top: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .crono-texto {
+      padding: 10px 0 20px;
+      font-size: 14px;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+
+    /* Grids de items */
+    .items-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .item-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .item-card-icon {
+      font-size: 18px;
+      flex-shrink: 0;
+      line-height: 1.2;
+    }
+
+    .item-card p {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+      margin: 0 !important;
+    }
+
+    /* Galería de fotos */
+    .galeria-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .galeria-item {
+      aspect-ratio: 1;
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+    }
+
+    .galeria-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s;
+    }
+    .galeria-item:hover img { transform: scale(1.04); }
+
+    /* Placeholder de galería */
+    .galeria-placeholder {
+      aspect-ratio: 1;
+      border-radius: 8px;
+      background: var(--color-surface);
+      border: 1px dashed var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      color: var(--color-text-footer);
+    }
+
+    /* Próxima edición */
+    .proxima-box {
+      background: rgba(160,120,255,0.06);
+      border: 1px solid var(--color-border-accent);
+      border-radius: 12px;
+      padding: 28px;
+      text-align: center;
+    }
+
+    .proxima-box h2 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 22px;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .proxima-box p {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+      max-width: 440px;
+      margin: 0 auto 24px;
+    }
+
+    /* Novedades */
+    .novedades-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .novedad-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .novedad-item:first-child { padding-top: 0; }
+    .novedad-item:last-child  { border-bottom: none; padding-bottom: 0; }
+
+    .novedad-fecha {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--color-accent);
+      white-space: nowrap;
+      padding-top: 2px;
+      letter-spacing: 0.04em;
+      width: 80px;
+      flex-shrink: 0;
+    }
+
+    .novedad-texto {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .sidebar-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      padding: 20px;
+    }
+    .sidebar-card h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 14px;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .sidebar-card p {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .sidebar-links {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--color-text-muted);
+      padding: 8px 10px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .sidebar-link:hover {
+      color: var(--color-text);
+      border-color: rgba(255,255,255,0.14);
+    }
+    .sidebar-link svg { width: 14px; height: 14px; flex-shrink: 0; color: var(--color-accent); }
+
+    /* ── FOOTER ── */
+    .footer {
+      padding: 32px 0;
+      border-top: 1px solid var(--color-border);
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-brand {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--color-text-footer);
+    }
+    .footer-brand span { color: var(--color-accent); opacity: 0.6; }
+    .footer-meta {
+      font-size: 11px;
+      color: var(--color-text-footer);
+      line-height: 1.6;
+      text-align: right;
+    }
+    .footer-meta a { color: var(--color-text-footer); transition: color 0.2s; }
+    .footer-meta a:hover { color: var(--color-text-muted); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .camp-hero-inner   { grid-template-columns: 1fr; }
+      .camp-logo-col     { display: none; }
+      .content-layout    { grid-template-columns: 1fr; gap: 40px; padding: 40px 0 60px; }
+      .sidebar           { position: relative; top: 0; }
+      .items-grid        { grid-template-columns: 1fr; }
+      .galeria-grid      { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      :root { --pad-x: 16px; }
+      .nav-links  { display: none; }
+      .nav-toggle { display: flex; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .footer-meta  { text-align: left; }
+    }
+    @media (max-width: 480px) {
+      .camp-hero-ctas { flex-direction: column; align-items: flex-start; }
+      .galeria-grid   { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVEGACIÓN -->
+  <header class="nav">
+    <div class="container">
+      <nav class="nav-inner">
+        <a href="index.html" class="nav-logo" aria-label="Comunidad Argentina de HEMA">
+            <div class="nav-logo-placeholder"><span>CADH</span></div>
+          </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="hemapa.html">HEMAPA</a></li>
+          <li><a href="recursos.html">Recursos</a></li>
+          <li><a href="convivencia.html">Convivencia</a></li>
+          <li><a href="sobre-cadh.html">Más sobre CADH</a></li>
+          <li><a href="campamento.html" class="active">Campamento</a></li>
+          <li class="nav-cta"><a href="https://chat.whatsapp.com/J8FOacdq1g0GMBEtuvFxuf" target="_blank" rel="noopener">Sumate</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
+    </div>
+    <nav class="nav-mobile" id="navMobile" aria-label="Menú mobile">
+      <a href="index.html">Inicio</a>
+      <a href="hemapa.html">HEMAPA</a>
+      <a href="recursos.html">Recursos</a>
+      <a href="convivencia.html">Convivencia</a>
+      <a href="sobre-cadh.html">Más sobre CADH</a>
+      <a href="campamento.html" class="active">Campamento</a>
+      <a href="https://chat.whatsapp.com/J8FOacdq1g0GMBEtuvFxuf" target="_blank" rel="noopener" class="mobile-cta">Sumate al WhatsApp →</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <div class="camp-hero">
+      <div class="container">
+        <div class="camp-hero-inner">
+          <div>
+            <div class="camp-edition-badge">
+              ⚔️ Primera edición · 2025
+            </div>
+            <h1>Campamento <em>CADH</em></h1>
+            <p class="camp-hero-desc">
+              Un encuentro abierto para toda la comunidad de HEMA y para quienes quieran acercarse a conocerla. Un fin de semana de entrenamientos, sparring, talleres y camaradería.
+            </p>
+            <div class="camp-hero-ctas">
+              <a href="https://chat.whatsapp.com/J8FOacdq1g0GMBEtuvFxuf" target="_blank" rel="noopener" class="btn-primary">
+                Seguí las novedades
+              </a>
+              <a href="https://www.instagram.com/comunidadargentinadehema" target="_blank" rel="noopener" class="btn-secondary">
+                Instagram
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+          <!-- Logo del campamento -->
+          <!-- El archivo del logo va en img/logo-campamento.png -->
+          <div class="camp-logo-col">
+            <img
+              src="img/logo-campamento.png"
+              alt="Logo Campamento CADH"
+              class="camp-logo-img"
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="content-layout">
+
+        <div class="main-content">
+
+          <!-- Sobre el campamento -->
+          <div class="camp-section">
+            <p class="section-label">Sobre el evento</p>
+            <h2>¿Qué es el Campamento CADH?</h2>
+            <p>
+              El Campamento CADH es una propuesta abierta para toda la comunidad de HEMA y para quienes quieran acercarse a conocerla. La idea es pasar un día compartiendo entrenamientos, sparring, charlas y momentos de camaradería en un ambiente distendido y seguro.
+            </p>
+            <p>
+              Más allá de la práctica, este encuentro busca ser un espacio para <strong>generar vínculos entre personas y grupos</strong>, intercambiar experiencias y fortalecer la comunidad de esgrima histórica. No importa de qué club vengas, ni siquiera si todavía no empezaste a practicar: <strong>¡todas y todos son bienvenidos!</strong>
+            </p>
+          </div>
+
+          <!-- Cronograma -->
+          <div class="camp-section">
+            <p class="section-label">Primera edición · 2025</p>
+            <h2>Cronograma del día</h2>
+            <div class="cronograma">
+              <div class="crono-item">
+                <div class="crono-hora">9:00</div>
+                <div class="crono-dot"></div>
+                <div class="crono-texto">Apertura del evento</div>
+              </div>
+              <div class="crono-item">
+                <div class="crono-hora">10:00</div>
+                <div class="crono-dot"></div>
+                <div class="crono-texto">Saludo inicial</div>
+              </div>
+              <div class="crono-item">
+                <div class="crono-hora">12:00</div>
+                <div class="crono-dot"></div>
+                <div class="crono-texto">Taller 1</div>
+              </div>
+              <div class="crono-item">
+                <div class="crono-hora">15:00</div>
+                <div class="crono-dot"></div>
+                <div class="crono-texto">Taller 2</div>
+              </div>
+              <div class="crono-item">
+                <div class="crono-hora">17:00</div>
+                <div class="crono-dot"></div>
+                <div class="crono-texto">Mesa dulce y mates</div>
+              </div>
+              <div class="crono-item">
+                <div class="crono-hora">18:30</div>
+                <div class="crono-dot"></div>
+                <div class="crono-texto">Cierre grupal y despedida</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Qué vas a encontrar -->
+          <div class="camp-section">
+            <p class="section-label">Lo que te espera</p>
+            <h2>¿Qué tiene el campamento?</h2>
+            <div class="items-grid">
+              <div class="item-card">
+                <div class="item-card-icon">⚔️</div>
+                <p>Áreas de <strong>sparring libre</strong> y combates amistosos con boffers, feders y caretas disponibles para préstamo.</p>
+              </div>
+              <div class="item-card">
+                <div class="item-card-icon">📚</div>
+                <p><strong>Talleres</strong> para seguir creciendo en HEMA con instructores de la comunidad.</p>
+              </div>
+              <div class="item-card">
+                <div class="item-card-icon">🧉</div>
+                <p>Espacio de <strong>descanso, mate y socialización</strong>. El encuentro también es afuera de la pista.</p>
+              </div>
+              <div class="item-card">
+                <div class="item-card-icon">🍰</div>
+                <p><strong>Mesa dulce compartida</strong> al final del día para cerrar entre todos.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Qué llevar -->
+          <div class="camp-section">
+            <p class="section-label">Preparate</p>
+            <h2>¿Qué tenés que traer?</h2>
+            <div class="items-grid">
+              <div class="item-card">
+                <div class="item-card-icon">🥙</div>
+                <p><strong>Vianda para almorzar</strong> y algo para tomar. Hay comercios cerca del lugar.</p>
+              </div>
+              <div class="item-card">
+                <div class="item-card-icon">🛡️</div>
+                <p>Tu <strong>equipo de protección personal</strong>. Caretas y equipo básico disponible para préstamo.</p>
+              </div>
+              <div class="item-card">
+                <div class="item-card-icon">🗡️</div>
+                <p>Tus <strong>espadas</strong>: boffer, plástico o acero. Cualquier tipo es bienvenido.</p>
+              </div>
+              <div class="item-card">
+                <div class="item-card-icon">😄</div>
+                <p><strong>Buena onda y ganas de pasarla bien.</strong> El resto lo ponemos entre todos.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Galería -->
+          <div class="camp-section">
+            <p class="section-label">Fotos</p>
+            <h2>Galería de la primera edición</h2>
+            <!--
+              CÓMO AGREGAR FOTOS:
+              1. Guardá las imágenes en la carpeta img/campamento/
+                 (ej: img/campamento/foto-01.jpg, foto-02.jpg, etc.)
+              2. Reemplazá los bloques de placeholder por bloques reales:
+
+              <div class="galeria-item">
+                <img src="img/campamento/foto-01.jpg" alt="Descripción de la foto" loading="lazy">
+              </div>
+
+              3. Podés agregar tantos bloques como fotos tengas.
+              El grid se acomoda solo.
+            -->
+            <div class="galeria-grid">
+              <div class="galeria-placeholder">📷</div>
+              <div class="galeria-placeholder">📷</div>
+              <div class="galeria-placeholder">📷</div>
+              <div class="galeria-placeholder">📷</div>
+              <div class="galeria-placeholder">📷</div>
+              <div class="galeria-placeholder">📷</div>
+            </div>
+            <p style="font-size: 13px; color: var(--color-text-footer); margin-top: 14px;">
+              Reemplazá los placeholders con las fotos del evento. Ver comentarios en el código para instrucciones.
+            </p>
+          </div>
+
+          <!-- Próxima edición -->
+          <div class="camp-section">
+            <div class="proxima-box">
+              <h2>¿Habrá una segunda edición? 🏕️</h2>
+              <p>
+                Si el primero salió bien, el segundo viene mejor. Seguí las redes y la comunidad de WhatsApp para enterarte cuando confirmemos la próxima fecha.
+              </p>
+              <a href="https://chat.whatsapp.com/J8FOacdq1g0GMBEtuvFxuf" target="_blank" rel="noopener" class="btn-primary">
+                Avisame cuando haya novedades
+              </a>
+            </div>
+          </div>
+
+          <!-- Novedades -->
+          <div class="camp-section">
+            <p class="section-label">Historial</p>
+            <h2>Novedades</h2>
+            <!--
+              CÓMO AGREGAR NOVEDADES:
+              Copiás un bloque .novedad-item y lo pegás al principio de la lista
+              (las más recientes arriba). Formato de fecha: DD/MM/AAAA.
+            -->
+            <div class="novedades-list">
+              <div class="novedad-item">
+                <div class="novedad-fecha">20/10/2025</div>
+                <div class="novedad-texto">Fijamos fecha y lugar del primer Campamento CADH.</div>
+              </div>
+              <div class="novedad-item">
+                <div class="novedad-fecha">19/09/2025</div>
+                <div class="novedad-texto">Hacemos público el evento y comenzamos las preinscripciones.</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+          <div class="sidebar-card">
+            <h3>Seguí las novedades</h3>
+            <p>Enterate de la próxima edición por nuestras redes y la comunidad.</p>
+            <div class="sidebar-links">
+              <a href="https://www.instagram.com/comunidadargentinadehema" target="_blank" rel="noopener" class="sidebar-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                Instagram
+              </a>
+              <a href="https://www.facebook.com/comunidadargentinadehema" target="_blank" rel="noopener" class="sidebar-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                Facebook
+              </a>
+              <a href="https://chat.whatsapp.com/J8FOacdq1g0GMBEtuvFxuf" target="_blank" rel="noopener" class="sidebar-link">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                WhatsApp Community
+              </a>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <h3>Otras páginas</h3>
+            <div class="sidebar-links">
+              <a href="hemapa.html" class="sidebar-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 13 8 13s8-7.75 8-13a8 8 0 0 0-8-8z"/></svg>
+                HEMAPA
+              </a>
+              <a href="sobre-cadh.html" class="sidebar-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                Más sobre CADH
+              </a>
+              <a href="recursos.html" class="sidebar-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                Recursos
+              </a>
+            </div>
+          </div>
+
+        </aside>
+
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">Comunidad Argentina de <span>HEMA</span> · CADH</div>
+        <div class="footer-meta">
+          <a href="mailto:comunidadargentinadehema@gmail.com">comunidadargentinadehema@gmail.com</a><br>
+          Un proyecto colaborativo · Argentina · 2024
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('navToggle');
+    const mobile = document.getElementById('navMobile');
+    toggle.addEventListener('click', () => {
+      const open = mobile.classList.toggle('open');
+      toggle.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open);
+    });
+  </script>
+
+</body>
+</html>

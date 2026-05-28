@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convivencia y colaboración — Comunidad Argentina de HEMA</title>
+  <meta name="description" content="Pautas de convivencia y colaboración de la CADH. Cómo participar, qué se espera de cada uno y cómo colaborar con la comunidad argentina de HEMA.">
+  <meta name="keywords" content="HEMA Argentina, CADH, pautas comunidad, colaboración HEMA">
+  <meta name="author" content="Comunidad Argentina de HEMA">
+
+  <meta property="og:title" content="Convivencia y colaboración — CADH">
+  <meta property="og:description" content="Pautas de convivencia y colaboración de la Comunidad Argentina de HEMA.">
+  <meta property="og:image" content="https://www.comunidadargentinadehema.com.ar/img/og-image.jpg">
+  <meta property="og:url" content="https://www.comunidadargentinadehema.com.ar/convivencia.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-bg:            #0f0f13;
+      --color-text:          #e8e4f0;
+      --color-text-muted:    #9a94a8;
+      --color-text-footer:   #4e4a5a;
+      --color-accent:        #a07bff;
+      --color-accent-dark:   #7c5cbf;
+      --color-surface:       rgba(255, 255, 255, 0.03);
+      --color-border:        rgba(160, 120, 255, 0.12);
+      --color-border-accent: rgba(160, 120, 255, 0.30);
+      --font-display:        'Syne', sans-serif;
+      --font-body:           'DM Sans', sans-serif;
+      --max-width: 1100px;
+      --pad-x:     28px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-size: 15px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--pad-x);
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 12px;
+    }
+
+    /* ── BOTONES ── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--color-accent);
+      color: #0f0f13;
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: 0.02em;
+      padding: 11px 22px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-primary:hover  { background: #b892ff; }
+    .btn-primary:active { transform: scale(0.98); }
+
+    /* ── NAVEGACIÓN ── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15, 15, 19, 0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+    .nav-logo-placeholder {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(160,120,255,0.12);
+      border: 1px solid var(--color-border-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .nav-logo-placeholder span {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 9px;
+      letter-spacing: 0.08em;
+      color: var(--color-accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover  { color: var(--color-text); }
+    .nav-links a.active { color: var(--color-accent); }
+    .nav-links .nav-cta a {
+      color: var(--color-accent);
+      border: 1px solid var(--color-border-accent);
+      border-radius: 6px;
+      padding: 5px 12px;
+    }
+    .nav-links .nav-cta a:hover { background: rgba(160,120,255,0.08); }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block;
+      height: 1.5px;
+      background: var(--color-text);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .nav-mobile {
+      display: none;
+      flex-direction: column;
+      border-top: 1px solid var(--color-border);
+      padding: 16px var(--pad-x) 20px;
+      gap: 4px;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      transition: color 0.2s;
+    }
+    .nav-mobile a:hover  { color: var(--color-text); }
+    .nav-mobile a.active { color: var(--color-accent); }
+    .nav-mobile a.mobile-cta {
+      color: var(--color-accent);
+      font-weight: 500;
+      border-bottom: none;
+      margin-top: 8px;
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 52px 0 40px;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .page-header h1 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: #fff;
+      max-width: 600px;
+      margin-bottom: 16px;
+    }
+    .page-header h1 em {
+      font-style: normal;
+      color: var(--color-accent);
+    }
+    .page-header p {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--color-text-muted);
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    /* ── LAYOUT ── */
+    .content-layout {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 64px;
+      padding: 56px 0 80px;
+      align-items: start;
+    }
+
+    /* ── TABS DE NAVEGACIÓN INTERNA ── */
+    .tabs {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 0;
+    }
+
+    .tab-btn {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--color-text-muted);
+      background: none;
+      border: none;
+      padding: 10px 16px;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .tab-btn:hover  { color: var(--color-text); }
+    .tab-btn.active {
+      color: var(--color-accent);
+      border-bottom-color: var(--color-accent);
+      font-weight: 500;
+    }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ── SECCIONES DE CONTENIDO ── */
+    .pauta-block {
+      margin-bottom: 36px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .pauta-block:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .pauta-block h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 18px;
+      color: #fff;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pauta-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: rgba(160,120,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .pauta-block p {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      line-height: 1.75;
+      margin-bottom: 10px;
+    }
+    .pauta-block p:last-child { margin-bottom: 0; }
+
+    .pauta-block strong {
+      color: var(--color-text);
+      font-weight: 500;
+    }
+
+    /* Alerta de gravedad */
+    .alert-box {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: rgba(255, 80, 80, 0.06);
+      border: 1px solid rgba(255, 80, 80, 0.2);
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-top: 12px;
+    }
+    .alert-box-icon { font-size: 16px; flex-shrink: 0; line-height: 1.5; }
+    .alert-box p {
+      font-size: 13px;
+      color: rgba(232,228,240,0.7);
+      margin: 0 !important;
+      line-height: 1.6;
+    }
+
+    /* Info box */
+    .info-box {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: rgba(160,120,255,0.06);
+      border: 1px solid var(--color-border-accent);
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-top: 12px;
+    }
+    .info-box-icon { font-size: 16px; flex-shrink: 0; line-height: 1.5; }
+    .info-box p {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      margin: 0 !important;
+      line-height: 1.6;
+    }
+    .info-box strong { color: var(--color-accent) !important; }
+
+    /* Lista con puntos */
+    .dot-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .dot-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .dot-item-bullet {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      flex-shrink: 0;
+      margin-top: 9px;
+    }
+    .dot-item p {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      line-height: 1.65;
+      margin: 0 !important;
+    }
+
+    /* Nota al pie del documento */
+    .doc-footer-note {
+      margin-top: 32px;
+      padding: 14px 18px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      font-size: 12px;
+      color: var(--color-text-footer);
+      line-height: 1.6;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .sidebar-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      padding: 20px;
+    }
+    .sidebar-card h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 14px;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .sidebar-card p {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .index-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .index-link {
+      font-size: 12px;
+      color: var(--color-text-muted);
+      padding: 7px 10px;
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+      display: block;
+    }
+    .index-link:hover {
+      color: var(--color-accent);
+      background: rgba(160,120,255,0.06);
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      padding: 32px 0;
+      border-top: 1px solid var(--color-border);
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-brand {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--color-text-footer);
+    }
+    .footer-brand span { color: var(--color-accent); opacity: 0.6; }
+    .footer-meta {
+      font-size: 11px;
+      color: var(--color-text-footer);
+      line-height: 1.6;
+      text-align: right;
+    }
+    .footer-meta a { color: var(--color-text-footer); transition: color 0.2s; }
+    .footer-meta a:hover { color: var(--color-text-muted); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .content-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 40px 0 60px;
+      }
+      .sidebar { position: relative; top: 0; }
+    }
+    @media (max-width: 768px) {
+      :root { --pad-x: 16px; }
+      .nav-links  { display: none; }
+      .nav-toggle { display: flex; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .footer-meta  { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVEGACIÓN -->
+  <header class="nav">
+    <div class="container">
+      <nav class="nav-inner">
+        <a href="index.html" class="nav-logo" aria-label="Comunidad Argentina de HEMA">
+            <div class="nav-logo-placeholder"><span>CADH</span></div>
+          </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="hemapa.html">HEMAPA</a></li>
+          <li><a href="recursos.html">Recursos</a></li>
+          <li><a href="convivencia.html" class="active">Convivencia</a></li>
+          <li><a href="sobre-cadh.html">Más sobre CADH</a></li>
+          <li><a href="campamento.html">Campamento</a></li>
+          <li class="nav-cta"><a href="https://chat.whatsapp.com/J8FOacdq1g0GMBEtuvFxuf" target="_blank" rel="noopener">Sumate</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
+    </div>
+    <nav class="nav-mobile" id="navMobile" aria-label="Menú mobile">
+      <a href="index.html">Inicio</a>
+      <a href="hemapa.html">HEMAPA</a>
+      <a href="recursos.html">Recursos</a>
+      <a href="convivencia.html" class="active">Convivencia</a>
+      <a href="sobre-cadh.html">Más sobre CADH</a>
+      <a href="campamento.html">Campamento</a>
+      <a href="https://chat.whatsapp.com/J8FOacdq1g0GMBEtuvFxuf" target="_blank" rel="noopener" class="mobile-cta">Sumate al WhatsApp →</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+      <div class="container">
+        <p class="section-label">La comunidad</p>
+        <h1>Convivencia y <em>colaboración</em></h1>
+        <p>Cómo nos tratamos, cómo trabajamos juntos y qué se espera de quienes forman parte de la CADH.</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="content-layout">
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <div class="main-content">
+
+          <!-- Tabs -->
+          <div class="tabs" role="tablist">
+            <button class="tab-btn active" role="tab" aria-selected="true"  data-tab="convivencia">Pautas de convivencia</button>
+            <button class="tab-btn"        role="tab" aria-selected="false" data-tab="colaboracion">Pautas de colaboración</button>
+          </div>
+
+          <!-- PANEL: CONVIVENCIA -->
+          <div class="tab-panel active" id="tab-convivencia">
+
+            <div class="pauta-block">
+              <h2><div class="pauta-icon">🤝</div> Espíritu de comunidad</h2>
+              <p>Este espacio es para construir, compartir y colaborar. Aportá siempre desde una actitud positiva y generosa. Recordá que nadie está obligado a estar acá, pero todos los que eligen estar merecen un trato digno y cordial.</p>
+            </div>
+
+            <div class="pauta-block">
+              <h2><div class="pauta-icon">💬</div> Respeto mutuo ante todo</h2>
+              <p>Cada persona que participa en la CADH lo hace desde su propio recorrido y experiencia. Se espera un trato respetuoso entre todos, incluso cuando haya diferencias de opinión.</p>
+              <p>Las discusiones y desacuerdos pueden existir, pero siempre deben darse en un marco de <strong>respeto, escucha y buena fe</strong>. Las diferencias enriquecen.</p>
+            </div>
+
+            <div class="pauta-block">
+              <h2><div class="pauta-icon">🌐</div> Espacio libre de discriminación</h2>
+              <p>No se tolerará ningún tipo de discriminación por motivos de género, orientación sexual, identidad de género, religión, etnia, nacionalidad, edad, capacidades físicas, condición socioeconómica o cualquier otra forma de prejuicio.</p>
+            </div>
+
+            <div class="pauta-block">
+              <h2><div class="pauta-icon">🚫</div> Cero tolerancia al acoso</h2>
+              <p>Está prohibido acosar, hostigar, ridiculizar, insultar o perseguir a cualquier integrante.</p>
+              <div class="alert-box">
+                <div class="alert-box-icon">⚠️</div>
+                <p>De especial gravedad se considerará cualquier acoso de índole sexual. Ante una denuncia de este tipo, se tomará intervención inmediata.</p>
+              </div>
+            </div>
+
+            <div class="pauta-block">
+              <h2><div class="pauta-icon">⚔️</div> Enfocados en HEMA</h2>
+              <p>Este no es un foro para debatir política, religión, economía u otras temáticas ajenas a la práctica y difusión de HEMA. Buscamos preservar un entorno <strong>neutral, amigable y centrado en lo que nos une</strong>.</p>
+            </div>
+
+            <div class="pauta-block">
+              <h2><div class="pauta-icon">🔒</div> Privacidad y consentimiento</h2>
+              <p>No se deben compartir capturas, conversaciones privadas o datos personales de otros sin su permiso explícito. Si alguien te escribe en privado y no querés continuar la charla, podés decirlo de forma clara y respetuosa.</p>
+            </div>
+
+            <div class="pauta-block">
+              <h2><div class="pauta-icon">✅</div> Aceptación de estas pautas</h2>
+              <p>Al participar y sumarte a la CADH se considera que leíste y aceptaste estas pautas. <strong>El desconocimiento no es excusa válida</strong> ante su incumplimiento.</p>
+            </div>
+
+          </div>
+
+          <!-- PANEL: COLABORACIÓN -->
+          <div class="tab-panel" id="tab-colaboracion">
+
+            <div class="pauta-block">
+              <h2><div class="pauta-icon">🏗️</div> Qué es la CADH</h2>
+              <p>La CADH es un proyecto personal creado y sostenido por el administrador, con su tiempo, esfuerzo y dedicación. <strong>No es una federación, ni una organización formal, ni una democracia.</strong> Es un espacio al que cualquiera puede sumarse y participar libremente, siempre con respeto.</p>
+              <div class="info-box">
+                <div class="info-box-icon">💡</div>
+                <p>Como en los foros de antes: hay alguien que crea el espacio, lo sostiene, lo modera y define los lineamientos generales.</p>
+              </div>
+            </div>
+
+            <div class="pauta-block">
+              <h2><div class="pauta-icon">🔄</div> Reciprocidad</h2>
+              <p>Todo aporte o colaboración debe darse en un marco de reciprocidad. Si querés que desde la CADH se comparta tu contenido, lo lógico es que vos también apoyes el contenido de la CADH: seguir, dar me gusta, comentar, compartir.</p>
+              <p><strong>El intercambio de visibilidad no puede ser unilateral.</strong> Es una calle de ida y vuelta.</p>
+              <div class="dot-list">
+                <div class="dot-item">
+                  <div class="dot-item-bullet"></div>
+                  <p>Para que se comparta contenido tuyo en la CADH, se requiere al menos <strong>un mes de aporte activo</strong> a la difusión del contenido de la CADH.</p>
+                </div>
+                <div class="dot-item">
+                  <div class="dot-item-bullet"></div>
+                  <p>Para aparecer en el HEMAPA, los clubes y grupos de estudio deben <strong>seguir la cuenta de Instagram de la CADH</strong> (y Facebook si tuvieran). Se exceptúa a grupos en etapa formativa sin cuentas oficiales aún.</p>
+                </div>
+                <div class="dot-item">
+                  <div class="dot-item-bullet"></div>
+                  <p>Como muestra de reciprocidad, <strong>cualquier club o grupo que nos siga será seguido de vuelta</strong> inmediatamente.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="pauta-block">
+              <h2><div class="pauta-icon">🤜</div> Proyectos conjuntos</h2>
+              <p>Si querés llevar adelante un proyecto en conjunto con la CADH (una actividad, un recurso, un posteo temático, etc.), podés proponerlo <strong>sin necesidad de esperar ningún tiempo previo</strong>.</p>
+              <div class="dot-list">
+                <div class="dot-item">
+                  <div class="dot-item-bullet"></div>
+                  <p>Ambas partes deben poner esfuerzo y comprometerse a visibilizar y compartir lo producido.</p>
+                </div>
+                <div class="dot-item">
+                  <div class="dot-item-bullet"></div>
+                  <p>Se evalúa según el compromiso mutuo y el aporte concreto de cada parte.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="pauta-block">
+              <h2><div class="pauta-icon">🎯</div> Proyectos terminados</h2>
+              <p>Si ya completaste o tenés en producción un proyecto que puede sumarle valor a la CADH, con mucho gusto te ofrecemos el espacio para mostrarlo — sea un trabajo individual o grupal.</p>
+              <div class="info-box">
+                <div class="info-box-icon">ℹ️</div>
+                <p>Si bien no requerimos participación previa, <strong>no vamos a sostener proyectos que solo buscan visualizarse</strong> sin sumar a la comunidad.</p>
+              </div>
+            </div>
+
+            <div class="pauta-block">
+              <h2><div class="pauta-icon">⭐</div> Calidad y crédito</h2>
+              <p>En la CADH mantenemos un alto estándar en todo el contenido que compartimos, tanto en valor informativo como en presentación. Nos reservamos el derecho de no publicar propuestas que no cumplan con estos criterios.</p>
+              <div class="dot-list">
+                <div class="dot-item">
+                  <div class="dot-item-bullet"></div>
+                  <p>Todo material compartido a través de la CADH que haya sido creado por otra persona o grupo será <strong>identificado con el nombre del autor</strong>.</p>
+                </div>
+                <div class="dot-item">
+                  <div class="dot-item-bullet"></div>
+                  <p>Habrá una sección especial de <strong>agradecimientos visibles</strong> para quienes hayan colaborado de forma constante.</p>
+                </div>
+                <div class="dot-item">
+                  <div class="dot-item-bullet"></div>
+                  <p>Los aportes son independientes de las personas que los aportaron.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="doc-footer-note">
+              Este conjunto de pautas puede ser modificado y ampliado de ser necesario en el futuro.
+            </div>
+
+          </div>
+          <!-- fin tab colaboración -->
+
+        </div>
+        <!-- fin main content -->
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+          <div class="sidebar-card">
+            <h3>En esta página</h3>
+            <div class="index-list">
+              <a class="index-link" href="#" data-goto="convivencia">Pautas de convivencia</a>
+              <a class="index-link" href="#" data-goto="colaboracion">Pautas de colaboración</a>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <h3>¿Querés colaborar?</h3>
+            <p>Si tenés una idea o propuesta, sumate a la comunidad y contanos.</p>
+            <a href="https://chat.whatsapp.com/J8FOacdq1g0GMBEtuvFxuf" target="_blank" rel="noopener" class="btn-primary" style="width:100%; justify-content:center;">
+              Sumate al WhatsApp
+            </a>
+          </div>
+
+          <div class="sidebar-card">
+            <h3>Más sobre la CADH</h3>
+            <div class="index-list">
+              <a class="index-link" href="sobre-cadh.html">Quiénes somos</a>
+              <a class="index-link" href="hemapa.html">HEMAPA</a>
+              <a class="index-link" href="recursos.html">Recursos</a>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          Comunidad Argentina de <span>HEMA</span> · CADH
+        </div>
+        <div class="footer-meta">
+          <a href="mailto:comunidadargentinadehema@gmail.com">comunidadargentinadehema@gmail.com</a><br>
+          Un proyecto colaborativo · Argentina · 2024
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Menú hamburger
+    const toggle = document.getElementById('navToggle');
+    const mobile = document.getElementById('navMobile');
+    toggle.addEventListener('click', () => {
+      const open = mobile.classList.toggle('open');
+      toggle.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open);
+    });
+
+    // Tabs
+    const tabBtns   = document.querySelectorAll('.tab-btn');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+
+    function activateTab(tabId) {
+      tabBtns.forEach(btn => {
+        const isActive = btn.dataset.tab === tabId;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-selected', isActive);
+      });
+      tabPanels.forEach(panel => {
+        panel.classList.toggle('active', panel.id === 'tab-' + tabId);
+      });
+    }
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => activateTab(btn.dataset.tab));
+    });
+
+    // Links del sidebar que cambian de tab
+    document.querySelectorAll('[data-goto]').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        activateTab(link.dataset.goto);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+
+</body>
+</html>

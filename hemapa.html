@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HEMAPA — Comunidad Argentina de HEMA</title>
+  <meta name="description" content="El HEMAPA es el mapa de practicantes de HEMA y esgrima histórica de Argentina. Encontrá clubes, grupos de estudio y practicantes cerca tuyo.">
+  <meta name="keywords" content="HEMA Argentina, esgrima histórica Argentina, clubes HEMA, mapa practicantes HEMA">
+  <meta name="author" content="Comunidad Argentina de HEMA">
+
+  <meta property="og:title" content="HEMAPA — Mapa de practicantes de HEMA en Argentina">
+  <meta property="og:description" content="Encontrá clubes, grupos de estudio y practicantes de esgrima histórica cerca tuyo en Argentina.">
+  <meta property="og:image" content="https://www.comunidadargentinadehema.com.ar/img/og-image.jpg">
+  <meta property="og:url" content="https://www.comunidadargentinadehema.com.ar/hemapa.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-bg:            #0f0f13;
+      --color-text:          #e8e4f0;
+      --color-text-muted:    #9a94a8;
+      --color-text-footer:   #4e4a5a;
+      --color-accent:        #a07bff;
+      --color-accent-dark:   #7c5cbf;
+      --color-surface:       rgba(255, 255, 255, 0.03);
+      --color-border:        rgba(160, 120, 255, 0.12);
+      --color-border-accent: rgba(160, 120, 255, 0.30);
+      --font-display:        'Syne', sans-serif;
+      --font-body:           'DM Sans', sans-serif;
+      --space-xs:  4px;
+      --space-sm:  8px;
+      --space-md:  16px;
+      --space-lg:  24px;
+      --space-xl:  40px;
+      --space-2xl: 64px;
+      --max-width: 1100px;
+      --pad-x:     28px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-size: 15px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ── UTILIDADES ── */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--pad-x);
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 12px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      border: 1px solid var(--color-border-accent);
+      border-radius: 100px;
+      padding: 4px 14px;
+    }
+
+    /* ── BOTONES ── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--color-accent);
+      color: #0f0f13;
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: 0.02em;
+      padding: 11px 22px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-primary:hover  { background: #b892ff; }
+    .btn-primary:active { transform: scale(0.98); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 13px;
+      padding: 11px 22px;
+      border-radius: 8px;
+      border: 1px solid rgba(232, 228, 240, 0.2);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-secondary:hover { border-color: rgba(232,228,240,0.45); color: #fff; }
+
+    /* ── NAVEGACIÓN ── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15, 15, 19, 0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+    .nav-logo-placeholder {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(160,120,255,0.12);
+      border: 1px solid var(--color-border-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .nav-logo-placeholder span {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 9px;
+      letter-spacing: 0.08em;
+      color: var(--color-accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover  { color: var(--color-text); }
+    .nav-links a.active { color: var(--color-accent); }
+
+    .nav-links .nav-cta a {
+      color: var(--color-accent);
+      border: 1px solid var(--color-border-accent);
+      border-radius: 6px;
+      padding: 5px 12px;
+      letter-spacing: 0.04em;
+    }
+    .nav-links .nav-cta a:hover { background: rgba(160,120,255,0.08); }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block;
+      height: 1.5px;
+      background: var(--color-text);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .nav-mobile {
+      display: none;
+      flex-direction: column;
+      border-top: 1px solid var(--color-border);
+      padding: 16px var(--pad-x) 20px;
+      gap: 4px;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      transition: color 0.2s;
+    }
+    .nav-mobile a:hover  { color: var(--color-text); }
+    .nav-mobile a.active { color: var(--color-accent); }
+    .nav-mobile a.mobile-cta {
+      color: var(--color-accent);
+      font-weight: 500;
+      border-bottom: none;
+      margin-top: 8px;
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 52px 0 40px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .page-header .section-label { margin-bottom: 16px; }
+
+    .page-header h1 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: #fff;
+      max-width: 600px;
+      margin-bottom: 16px;
+    }
+
+    .page-header h1 em {
+      font-style: normal;
+      color: var(--color-accent);
+    }
+
+    .page-header p {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--color-text-muted);
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    /* ── LAYOUT PRINCIPAL (dos columnas sticky) ── */
+    .hemapa-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      min-height: calc(100vh - 60px);
+      align-items: start;
+    }
+
+    /* Mapa — columna izquierda, sticky */
+    .hemapa-map-col {
+      position: sticky;
+      top: 60px;
+      height: calc(100vh - 60px);
+      border-right: 1px solid var(--color-border);
+    }
+
+    .hemapa-map-col iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: none;
+      filter: invert(90%) hue-rotate(180deg);
+    }
+
+    /* Contenido — columna derecha, scrolleable */
+    .hemapa-content-col {
+      padding: 40px 32px 64px;
+      overflow-y: auto;
+    }
+
+    /* ── INTRO ── */
+    .hemapa-intro {
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .hemapa-intro p {
+      font-size: 15px;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    .hemapa-intro p:last-child { margin-bottom: 0; }
+
+    .hemapa-intro strong {
+      color: var(--color-text);
+      font-weight: 500;
+    }
+
+    .tip-box {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: rgba(160,120,255,0.06);
+      border: 1px solid var(--color-border-accent);
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin: 20px 0;
+    }
+
+    .tip-box-icon {
+      font-size: 18px;
+      flex-shrink: 0;
+      line-height: 1.4;
+    }
+
+    .tip-box p {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      margin: 0 !important;
+      line-height: 1.6;
+    }
+
+    .tip-box strong {
+      color: var(--color-accent) !important;
+    }
+
+    /* ── CATEGORÍAS ── */
+    .categorias-section {
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .categorias-section h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 17px;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .categoria-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .categoria-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      transition: border-color 0.2s;
+    }
+    .categoria-item:hover { border-color: var(--color-border-accent); }
+
+    .categoria-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(160,120,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 15px;
+    }
+
+    .categoria-text h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--color-text);
+      margin-bottom: 3px;
+    }
+
+    .categoria-text p {
+      font-size: 12px;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+
+    /* ── REQUISITO ── */
+    .requisito-section {
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .requisito-section h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 17px;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .requisito-section p {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    .requisito-section p:last-child { margin-bottom: 0; }
+
+    .requisito-section strong {
+      color: var(--color-text);
+      font-weight: 500;
+    }
+
+    .redes-requisito {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .red-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--color-text-muted);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 7px 14px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .red-chip:hover {
+      color: var(--color-text);
+      border-color: rgba(255,255,255,0.18);
+    }
+    .red-chip svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+    /* ── CTA REGISTRO ── */
+    .registro-section h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 17px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .registro-section p {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .registro-ctas {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      padding: 32px 0;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--color-text-footer);
+    }
+    .footer-brand span { color: var(--color-accent); opacity: 0.6; }
+
+    .footer-meta {
+      font-size: 11px;
+      color: var(--color-text-footer);
+      line-height: 1.6;
+      text-align: right;
+    }
+    .footer-meta a {
+      color: var(--color-text-footer);
+      transition: color 0.2s;
+    }
+    .footer-meta a:hover { color: var(--color-text-muted); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hemapa-layout {
+        grid-template-columns: 1fr;
+        min-height: unset;
+      }
+
+      .hemapa-map-col {
+        position: relative;
+        top: 0;
+        height: 55vw;
+        min-height: 280px;
+        max-height: 420px;
+        border-right: none;
+        border-bottom: 1px solid var(--color-border);
+      }
+
+      .hemapa-content-col {
+        padding: 32px var(--pad-x) 48px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      :root { --pad-x: 16px; }
+      .nav-links  { display: none; }
+      .nav-toggle { display: flex; }
+
+      .footer-inner  { flex-direction: column; align-items: flex-start; }
+      .footer-meta   { text-align: left; }
+    }
+
+    @media (max-width: 480px) {
+      .registro-ctas { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVEGACIÓN -->
+  <header class="nav">
+    <div class="container">
+      <nav class="nav-inner">
+        <a href="index.html" class="nav-logo" aria-label="Comunidad Argentina de HEMA">
+            <div class="nav-logo-placeholder"><span>CADH</span></div>
+          </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="hemapa.html" class="active">HEMAPA</a></li>
+          <li><a href="recursos.html">Recursos</a></li>
+          <li><a href="convivencia.html">Convivencia</a></li>
+          <li><a href="sobre-cadh.html">Más sobre CADH</a></li>
+          <li><a href="campamento.html">Campamento</a></li>
+          <li class="nav-cta"><a href="https://chat.whatsapp.com/J8FOacdq1g0GMBEtuvFxuf" target="_blank" rel="noopener">Sumate</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
+    </div>
+    <nav class="nav-mobile" id="navMobile" aria-label="Menú mobile">
+      <a href="index.html">Inicio</a>
+      <a href="hemapa.html" class="active">HEMAPA</a>
+      <a href="recursos.html">Recursos</a>
+      <a href="convivencia.html">Convivencia</a>
+      <a href="sobre-cadh.html">Más sobre CADH</a>
+      <a href="campamento.html">Campamento</a>
+      <a href="https://chat.whatsapp.com/J8FOacdq1g0GMBEtuvFxuf" target="_blank" rel="noopener" class="mobile-cta">Sumate al WhatsApp →</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+      <div class="container">
+        <p class="section-label">HEMAPA</p>
+        <h1>Encontrá con quién practicar <em>esgrima histórica</em> en Argentina</h1>
+        <p>El mapa de practicantes, clubes e interesados de HEMA en todo el país.</p>
+      </div>
+    </div>
+
+    <!-- DOS COLUMNAS: MAPA + CONTENIDO -->
+    <div class="hemapa-layout">
+
+      <!-- COLUMNA IZQUIERDA: MAPA -->
+      <div class="hemapa-map-col">
+        <iframe
+          src="https://www.google.com/maps/d/embed?mid=1_AvpM5jvLw0DBzeobhIhQE3C5WzpiR8"
+          title="HEMAPA — Mapa de practicantes de HEMA en Argentina"
+          loading="lazy"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <!-- COLUMNA DERECHA: CONTENIDO -->
+      <div class="hemapa-content-col">
+
+        <!-- Intro -->
+        <div class="hemapa-intro">
+          <p>
+            En este mapa vas a encontrar a la mayoría de los <strong>clubes activos del país</strong> y también a interesados que quieren empezar a practicar pero no tienen un club cerca.
+          </p>
+
+          <div class="tip-box">
+            <div class="tip-box-icon">💡</div>
+            <p>
+              <strong>Pensalo como un "Tinder" de la esgrima histórica:</strong> conectá con gente real, cerca tuyo, con las mismas ganas de practicar.
+            </p>
+          </div>
+
+          <p>
+            Registrarse es súper simple: solo te pedimos tu nombre, una ubicación de referencia (puede ser tu barrio o ciudad) y un medio de contacto. Lleva 2 minutos.
+          </p>
+        </div>
+
+        <!-- Categorías -->
+        <div class="categorias-section">
+          <h2>¿Quiénes pueden registrarse?</h2>
+          <div class="categoria-list">
+
+            <div class="categoria-item">
+              <div class="categoria-icon">🏛️</div>
+              <div class="categoria-text">
+                <h3>Club o academia</h3>
+                <p>Grupo establecido liderado por uno o más instructores, con clases estructuradas y lugar fijo de entrenamiento.</p>
+              </div>
+            </div>
+
+            <div class="categoria-item">
+              <div class="categoria-icon">🤝</div>
+              <div class="categoria-text">
+                <h3>Grupo de estudio</h3>
+                <p>Conjunto de personas que entrenan juntas, aunque no sean un club establecido.</p>
+              </div>
+            </div>
+
+            <div class="categoria-item">
+              <div class="categoria-icon">🧍</div>
+              <div class="categoria-text">
+                <h3>Practicante en solitario</h3>
+                <p>Quien entrena solo/a, por interés personal o falta de compañeros cercanos.</p>
+              </div>
+            </div>
+
+            <div class="categoria-item">
+              <div class="categoria-icon">🔍</div>
+              <div class="categoria-text">
+                <h3>Interesado sin grupo</h3>
+                <p>Quien todavía no practica pero quiere empezar y busca con quién hacerlo.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Requisito -->
+        <div class="requisito-section">
+          <h2>Requisito para aparecer</h2>
+          <p>
+            El HEMAPA es un proyecto que conlleva dedicación, tiempo y compromiso de nuestra parte. Para que crezca y tenga impacto real, necesitamos del apoyo y la participación activa de quienes forman parte.
+          </p>
+          <p>
+            Por eso, para aparecer en el HEMAPA es requisito <strong>seguir a la CADH en Instagram</strong> (y en Facebook si también lo usás). Las cuentas de clubes y grupos de estudio que nos sigan van a recibir un follow automático de vuelta.
+          </p>
+          <div class="redes-requisito">
+            <a href="https://www.instagram.com/comunidadargentinadehema" target="_blank" rel="noopener" class="red-chip">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              @comunidadargentinadehema
+            </a>
+            <a href="https://www.facebook.com/comunidadargentinadehema" target="_blank" rel="noopener" class="red-chip">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              /comunidadargentinadehema
+            </a>
+          </div>
+        </div>
+
+        <!-- CTA Registro -->
+        <div class="registro-section">
+          <h2>¿Querés aparecer en el mapa?</h2>
+          <p>Completá el formulario. Es rápido, lleva 2 minutos, y una vez aprobado tu registro va a aparecer en el mapa.</p>
+          <div class="registro-ctas">
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfUddRA02AiI-3MMwRQhoItD4dtpXo_jl9S77UoQwHRq2qmbg/viewform"
+              target="_blank"
+              rel="noopener"
+              class="btn-primary"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15" aria-hidden="true"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              Registrate en el HEMAPA
+            </a>
+            <a href="https://chat.whatsapp.com/J8FOacdq1g0GMBEtuvFxuf" target="_blank" rel="noopener" class="btn-secondary">
+              Sumate a la comunidad
+            </a>
+          </div>
+        </div>
+
+      </div>
+      <!-- fin columna derecha -->
+
+    </div>
+    <!-- fin layout -->
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          Comunidad Argentina de <span>HEMA</span> · CADH
+        </div>
+        <div class="footer-meta">
+          <a href="mailto:comunidadargentinadehema@gmail.com">comunidadargentinadehema@gmail.com</a><br>
+          Un proyecto colaborativo · Argentina · 2024
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('navToggle');
+    const mobile = document.getElementById('navMobile');
+    toggle.addEventListener('click', () => {
+      const open = mobile.classList.toggle('open');
+      toggle.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open);
+    });
+  </script>
+
+</body>
+</html>
