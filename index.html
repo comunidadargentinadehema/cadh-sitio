@@ -157,7 +157,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 60px;
+      height: 96px;
     }
 
     .nav-logo {
@@ -169,7 +169,7 @@
 
     /* Logo SVG real — se muestra cuando img/logo-cadh.svg existe */
     .nav-logo-img {
-      height: 44px;
+      height: 80px;
       width: auto;
       display: block;
     }
@@ -332,6 +332,14 @@
     }
 
     .hero-tag { margin-bottom: 28px; }
+
+    .hero-logo {
+      height: 72px;
+      width: auto;
+      display: block;
+      margin-bottom: 36px;
+      filter: drop-shadow(0 2px 16px rgba(160,120,255,0.25));
+    }
 
     .hero h1 {
       font-family: var(--font-display);
@@ -716,6 +724,11 @@
       <!-- Contenido -->
       <div class="hero-content">
         <div class="container">
+          <img
+            src="img/logo-cadh.svg"
+            alt="Comunidad Argentina de HEMA"
+            class="hero-logo"
+          >
           <div class="hero-tag">
             <span class="tag">
               <span class="tag-dot"></span>
