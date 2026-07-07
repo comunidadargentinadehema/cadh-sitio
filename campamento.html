@@ -419,6 +419,48 @@
       transition: transform 0.3s;
     }
     .galeria-item:hover img { transform: scale(1.04); }
+    .galeria-item { cursor: pointer; }
+
+    /* Lightbox — click para ampliar foto de galería */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(15, 15, 19, 0.92);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      cursor: zoom-out;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      cursor: default;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      background: none;
+      border: none;
+      color: var(--color-text);
+      font-size: 32px;
+      line-height: 1;
+      cursor: pointer;
+      padding: 8px;
+    }
+    .lightbox-close:hover { color: var(--color-accent); }
+    @media (max-width: 767px) {
+      .lightbox { padding: 16px; }
+    }
 
     /* Placeholder de galería */
     .galeria-placeholder {
@@ -776,14 +818,16 @@
               CÓMO AGREGAR FOTOS:
               1. Guardá las imágenes en la carpeta img/campamento/
                  (ej: img/campamento/foto-01.jpg, foto-02.jpg, etc.)
-              2. Reemplazá los bloques de placeholder por bloques reales:
+                 Tamaño recomendado: 1600px en el lado más largo, formato WebP o JPG, máx. 300KB.
+              2. Reemplazá cada bloque de placeholder por un bloque real:
 
               <div class="galeria-item">
                 <img src="img/campamento/foto-01.jpg" alt="Descripción de la foto" loading="lazy">
               </div>
 
-              3. Podés agregar tantos bloques como fotos tengas.
-              El grid se acomoda solo.
+              3. Podés agregar tantos bloques como fotos tengas. El grid se acomoda solo.
+              4. El click para ampliar (lightbox) ya funciona automáticamente en
+                 cualquier .galeria-item que tenga una <img> adentro — no hay que tocar nada más.
             -->
             <div class="galeria-grid">
               <div class="galeria-placeholder">📷</div>
@@ -794,7 +838,7 @@
               <div class="galeria-placeholder">📷</div>
             </div>
             <p style="font-size: 13px; color: var(--color-text-footer); margin-top: 14px;">
-              Reemplazá los placeholders con las fotos del evento. Ver comentarios en el código para instrucciones.
+              Las fotos son de uso libre citando la fuente, sin excepción. Para versiones en alta resolución, contactar al admin.
             </p>
           </div>
 
@@ -881,6 +925,12 @@
 
   </main>
 
+  <!-- Lightbox — se abre al hacer click en una foto de la galería -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar">&times;</button>
+    <img id="lightboxImg" src="" alt="">
+  </div>
+
   <footer class="footer">
     <div class="container">
       <div class="footer-inner">
@@ -900,6 +950,36 @@
       const open = mobile.classList.toggle('open');
       toggle.classList.toggle('open', open);
       toggle.setAttribute('aria-expanded', open);
+    });
+
+    // Lightbox de la galería: se activa solo en cualquier .galeria-item con <img> adentro.
+    // No hace falta tocar este bloque al agregar fotos nuevas.
+    const lightbox    = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    function abrirLightbox(src, alt) {
+      lightboxImg.src = src;
+      lightboxImg.alt = alt || '';
+      lightbox.classList.add('open');
+    }
+    function cerrarLightbox() {
+      lightbox.classList.remove('open');
+      lightboxImg.src = '';
+    }
+
+    document.querySelectorAll('.galeria-item img').forEach(img => {
+      img.closest('.galeria-item').addEventListener('click', () => {
+        abrirLightbox(img.src, img.alt);
+      });
+    });
+
+    lightboxClose.addEventListener('click', cerrarLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) cerrarLightbox(); // click en el fondo, no en la foto
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('open')) cerrarLightbox();
     });
   </script>
 
