@@ -3,21 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Comunidad Argentina de HEMA — CADH</title>
-  <meta name="description" content="La Comunidad Argentina de HEMA (CADH) es la comunidad más grande y activa de esgrima histórica de Argentina. Encontrá clubes, practicantes e instructores cerca tuyo.">
+  <title>Comunidad Argentina de HEMA (CADH) — Esgrima Histórica Argentina</title>
+  <meta name="description" content="La CADH conecta a practicantes, clubes e instructores de esgrima histórica (HEMA) en toda Argentina. Encontrá tu club más cercano en el HEMAPA.">
   <meta name="keywords" content="HEMA Argentina, esgrima histórica Argentina, clubes HEMA, esgrima medieval Argentina">
   <meta name="author" content="Comunidad Argentina de HEMA">
+  <meta name="robots" content="index, follow">
+
+  <link rel="icon" href="img/favicon.ico" sizes="any">
+  <link rel="icon" href="img/favicon-192.png" type="image/png" sizes="192x192">
 
   <meta property="og:title" content="Comunidad Argentina de HEMA — CADH">
   <meta property="og:description" content="La comunidad de esgrima histórica más grande y activa en Argentina.">
-  <meta property="og:image" content="https://www.comunidadargentinadehema.com.ar/img/og-image.jpg">
-  <meta property="og:url" content="https://www.comunidadargentinadehema.com.ar">
+  <meta property="og:image" content="https://www.cadh-hema.com.ar/img/og-image.jpg">
+  <meta property="og:url" content="https://www.cadh-hema.com.ar/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_AR">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Comunidad Argentina de HEMA — CADH">
   <meta name="twitter:description" content="La comunidad de esgrima histórica más grande y activa en Argentina.">
+
+  <link rel="canonical" href="https://www.cadh-hema.com.ar/">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -301,6 +307,16 @@
     .hero-slide:nth-child(3) { animation-delay: 10s; background-image: url('img/hero-3.jpg'); }
     .hero-slide:nth-child(4) { animation-delay: 15s; background-image: url('img/hero-4.jpg'); }
 
+    /* Imágenes reales para SEO/accesibilidad: mismo contenido que el fondo CSS de arriba, oculto visualmente */
+    .hero-slides-sr {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+    }
+
     @keyframes heroFade {
       0%           { opacity: 0; }
       5%           { opacity: 1; }   /* fade in rápido */
@@ -464,6 +480,103 @@
       filter: invert(90%) hue-rotate(180deg);
     }
 
+    /* ── PREVIEW HEMAPA (listado de la comunidad) ── */
+    .comunidad-section {
+      padding: var(--space-2xl) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .comunidad-header {
+      max-width: 640px;
+      margin-bottom: 40px;
+    }
+
+    .comunidad-header h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 28px;
+      line-height: 1.2;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .comunidad-header p {
+      font-size: 15px;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+    }
+
+    .comunidad-categorias {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px 48px;
+    }
+
+    .comunidad-categoria-header {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .comunidad-categoria-header h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--color-text);
+    }
+
+    .comunidad-categoria-header .count {
+      font-size: 12px;
+      color: var(--color-text-muted);
+    }
+
+    .comunidad-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .comunidad-chip {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 5px;
+      font-size: 12.5px;
+      color: var(--color-text);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 100px;
+      padding: 6px 13px;
+    }
+
+    .comunidad-chip .chip-lugar {
+      color: var(--color-text-muted);
+      font-size: 11.5px;
+    }
+
+    .comunidad-cta {
+      margin-top: 48px;
+      padding: 36px var(--pad-x);
+      margin-left: calc(var(--pad-x) * -1);
+      margin-right: calc(var(--pad-x) * -1);
+      background: linear-gradient(135deg, rgba(160,120,255,0.12), rgba(160,120,255,0.03));
+      border: 1px solid var(--color-border-accent);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .comunidad-cta h3 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 22px;
+      color: #fff;
+      letter-spacing: -0.01em;
+    }
+
     /* ── WHATSAPP ── */
     .whatsapp-section {
       padding: var(--space-2xl) 0;
@@ -591,6 +704,83 @@
       flex-shrink: 0;
     }
 
+    /* ── FAQ ── */
+    .faq-section {
+      padding: var(--space-2xl) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .faq-header {
+      max-width: 640px;
+      margin-bottom: 32px;
+    }
+
+    .faq-header h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 28px;
+      line-height: 1.2;
+      color: #fff;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 780px;
+    }
+
+    .faq-item {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .faq-item summary {
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 20px;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 14.5px;
+      color: var(--color-text);
+      transition: color 0.2s;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::marker { content: ''; }
+    .faq-item summary:hover { color: #fff; }
+
+    .faq-icon {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      color: var(--color-accent);
+      transition: transform 0.25s ease;
+    }
+    .faq-item[open] .faq-icon { transform: rotate(45deg); }
+
+    .faq-answer {
+      padding: 0 20px 20px;
+    }
+
+    .faq-answer p {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+    }
+
+    .faq-answer a {
+      color: var(--color-accent);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .faq-answer a:hover { color: #b892ff; }
+
     /* ── FOOTER ── */
     .footer {
       padding: 32px 0;
@@ -645,6 +835,19 @@
         order: -1;
       }
 
+      .comunidad-categorias {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .comunidad-cta {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+      }
+
+      .comunidad-cta .btn-primary { width: 100%; justify-content: center; }
+
       .grupos-grid {
         grid-template-columns: 1fr 1fr;
       }
@@ -669,6 +872,89 @@
       .hemapa-ctas { flex-direction: column; align-items: flex-start; }
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsOrganization",
+    "name": "Comunidad Argentina de HEMA",
+    "alternateName": "CADH",
+    "url": "https://www.cadh-hema.com.ar/",
+    "logo": "https://www.cadh-hema.com.ar/img/logo-cadh.svg",
+    "description": "Comunidad que conecta a practicantes, clubes e instructores de esgrima histórica (HEMA) en toda Argentina.",
+    "areaServed": {
+      "@type": "Country",
+      "name": "Argentina"
+    },
+    "sameAs": [
+      "https://www.instagram.com/cadh.hema",
+      "https://www.facebook.com/cadhhema"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Qué es el HEMA?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "HEMA (Historical European Martial Arts), también conocido como esgrima histórica, es la reconstrucción de las artes marciales europeas a partir de manuscritos y manuales que enseñaban cómo combatir, desde la Baja Edad Media hasta el siglo XIX. En la práctica, es aprender a pelear con espada larga, sable, rapiera y otras armas históricas, de la forma más cercana posible a como se hacía en la época de su uso, pero de forma segura y con fines recreativos o competitivos."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Es lo mismo que la recreación histórica?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Alguien que practica HEMA estudia técnicas de combate reales a partir de fuentes históricas, de forma similar a como alguien que practica kendo no es un samurái actuando un papel. El HEMA nació de la investigación académica y la arqueología experimental. Lo que se intenta recrear es la técnica, no la estética de una época en particular."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿En qué se diferencia de la esgrima olímpica?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La esgrima deportiva u olímpica moderna evolucionó de la esgrima de espada y sable del siglo XIX, donde era común que la aristocracia se batiera a duelo o practicara de forma recreativa. Con el tiempo se establecieron reglas deportivas que optimizaron las técnicas para el desempeño competitivo, dejando de lado la faceta marcial. El HEMA recoge esa faceta marcial y es lo que busca recrear, por eso las armas son mucho más variadas: espada larga, sable militar, rapiera, daga, lucha, armas astadas y más."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Es peligroso practicar HEMA?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No más que cualquier otro deporte de contacto, siempre que se use el equipo de seguridad adecuado: careta, pechera, guantes y chaqueta para HEMA. Las espadas de entrenamiento son romas y flexibles, diseñadas para reducir el impacto de los golpes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Necesito experiencia previa para empezar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. La mayoría de quienes empiezan HEMA no tuvieron ninguna experiencia previa en artes marciales ni esgrima. Solo hace falta ganas de aprender, los clubes enseñan desde cero."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Dónde puedo practicar HEMA en Argentina?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Consultá el HEMAPA de la Comunidad Argentina de HEMA: vas a encontrar un amplio listado de clubes, así como personas interesadas en practicar por su cuenta, repartidos por todo el país."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "No hay un club de HEMA cerca mío, ¿qué hago?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Podés sumarte igual a la comunidad de la CADH y buscar a otros interesados en tu zona a través del HEMAPA, para armar un grupo de estudio propio. También hay recursos como libros, canales de YouTube y manuales para arrancar por tu cuenta mientras encontrás compañeros de entrenamiento."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -718,6 +1004,14 @@
         <div class="hero-slide"></div>
       </div>
 
+      <!-- Versión indexable de las mismas fotos (oculta visualmente, el fondo real lo pone el CSS de arriba) -->
+      <div class="hero-slides-sr">
+        <img src="img/hero-1.jpg" alt="Practicantes de esgrima histórica HEMA entrenando con espada larga en Argentina">
+        <img src="img/hero-2.jpg" alt="Entrenamiento de HEMA con espadas y equipo de protección en un club argentino">
+        <img src="img/hero-3.jpg" alt="Combate de esgrima histórica con sable entre practicantes de HEMA en Argentina">
+        <img src="img/hero-4.jpg" alt="Clase de esgrima histórica HEMA de un club de la Comunidad Argentina de HEMA">
+      </div>
+
       <!-- Overlay de oscurecimiento -->
       <div class="hero-overlay" aria-hidden="true"></div>
 
@@ -730,9 +1024,9 @@
               Argentina · Desde 2024
             </span>
           </div>
-          <h1>La comunidad de <em>esgrima histórica</em> más grande de Argentina</h1>
+          <h1>HEMA y <em>esgrima histórica</em> en Argentina: la comunidad más grande del país</h1>
           <p class="hero-sub">
-            La CADH conecta a practicantes, instructores, clubes y curiosos de HEMA en todo el país. Encontrá gente cerca tuyo, compartí recursos y sumate a la conversación.
+            La CADH conecta a practicantes, instructores y clubes de HEMA en toda Argentina. Encontrá tu club más cercano, gente con quién entrenar y recursos para arrancar.
           </p>
           <div class="hero-ctas">
             <a href="https://chat.whatsapp.com/J8FOacdq1g0GMBEtuvFxuf" target="_blank" rel="noopener" class="btn-primary">
@@ -795,6 +1089,102 @@
       </div>
     </section>
 
+    <!-- COMUNIDAD (preview del HEMAPA) -->
+    <section class="comunidad-section">
+      <div class="container">
+        <div class="comunidad-header">
+          <p class="section-label">La red HEMAPA</p>
+          <h2>Encontrá con quién aprender HEMA</h2>
+          <p>
+            Clubes, grupos de estudio, practicantes en solitario e interesados en empezar, repartidos por todo el país. Esta es una muestra de quiénes forman parte — el detalle de contacto de cada uno está en el HEMAPA.
+          </p>
+        </div>
+
+        <!--
+          Lista de la comunidad HEMAPA — HTML estático a propósito (no generado por JS)
+          para que Google pueda leer los nombres/ciudades directo del código fuente.
+
+          Para agregar una persona/club nuevo: copiá una línea <span class="comunidad-chip">
+          dentro de la categoría que corresponda y cambiá el nombre y el lugar.
+          Los datos de contacto NUNCA van acá — esos solo están en hemapa.html.
+        -->
+        <div class="comunidad-categorias" id="comunidadCategorias">
+
+          <div class="comunidad-categoria">
+            <div class="comunidad-categoria-header">
+              <h3>Clubes y academias</h3>
+              <span class="count">(7)</span>
+            </div>
+            <div class="comunidad-chips">
+              <span class="comunidad-chip">La orden de la ceniza <span class="chip-lugar">— Saavedra, CABA</span></span>
+              <span class="comunidad-chip">Academia Vincere <span class="chip-lugar">— CABA</span></span>
+              <span class="comunidad-chip">Freifechter Mendoza <span class="chip-lugar">— Mendoza</span></span>
+              <span class="comunidad-chip">Cruz del Sur <span class="chip-lugar">— La Plata, Buenos Aires</span></span>
+              <span class="comunidad-chip">Sol del Norte <span class="chip-lugar">— Resistencia, Chaco</span></span>
+              <span class="comunidad-chip">Motus Esgrima <span class="chip-lugar">— Saavedra, CABA</span></span>
+              <span class="comunidad-chip">Scolari Esgrima Histórica <span class="chip-lugar">— Córdoba</span></span>
+            </div>
+          </div>
+
+          <div class="comunidad-categoria">
+            <div class="comunidad-categoria-header">
+              <h3>Grupos de estudio</h3>
+              <span class="count">(4)</span>
+            </div>
+            <div class="comunidad-chips">
+              <span class="comunidad-chip">Legió X Gemina <span class="chip-lugar">— Olavarría, Buenos Aires</span></span>
+              <span class="comunidad-chip">Kevin <span class="chip-lugar">— Santa Rosa, La Pampa</span></span>
+              <span class="comunidad-chip">Gremio Esgrima Histórica <span class="chip-lugar">— General Roca, Río Negro</span></span>
+              <span class="comunidad-chip">Omar <span class="chip-lugar">— Sierra Colorada, Río Negro</span></span>
+            </div>
+          </div>
+
+          <div class="comunidad-categoria">
+            <div class="comunidad-categoria-header">
+              <h3>Practicantes en solitario</h3>
+              <span class="count">(8)</span>
+            </div>
+            <div class="comunidad-chips">
+              <span class="comunidad-chip">Benjamín <span class="chip-lugar">— Virrey del Pino, Buenos Aires</span></span>
+              <span class="comunidad-chip">Camilo <span class="chip-lugar">— Marcos Paz, Buenos Aires</span></span>
+              <span class="comunidad-chip">Ain <span class="chip-lugar">— Plottier, Neuquén</span></span>
+              <span class="comunidad-chip">Ariel <span class="chip-lugar">— La Plata, Buenos Aires</span></span>
+              <span class="comunidad-chip">Leonel <span class="chip-lugar">— Villa Belgrano, Córdoba</span></span>
+              <span class="comunidad-chip">Juanchi <span class="chip-lugar">— Susana, Santa Fe</span></span>
+              <span class="comunidad-chip">Dante <span class="chip-lugar">— Corrientes Capital</span></span>
+              <span class="comunidad-chip">Bruno <span class="chip-lugar">— La Boca, CABA</span></span>
+            </div>
+          </div>
+
+          <div class="comunidad-categoria">
+            <div class="comunidad-categoria-header">
+              <h3>Interesados en empezar</h3>
+              <span class="count">(8)</span>
+            </div>
+            <div class="comunidad-chips">
+              <span class="comunidad-chip">Esteban <span class="chip-lugar">— Acassuso, Buenos Aires</span></span>
+              <span class="comunidad-chip">Daniel P. <span class="chip-lugar">— Mariano Acosta, Buenos Aires</span></span>
+              <span class="comunidad-chip">Joaquín G. <span class="chip-lugar">— Salta Capital</span></span>
+              <span class="comunidad-chip">Nicolás <span class="chip-lugar">— San Francisco Solano, Quilmes</span></span>
+              <span class="comunidad-chip">Joaquín V. <span class="chip-lugar">— Paso de los Libres, Corrientes</span></span>
+              <span class="comunidad-chip">Daniel Z. <span class="chip-lugar">— Quilmes, Buenos Aires</span></span>
+              <span class="comunidad-chip">Julieta <span class="chip-lugar">— Campana, Buenos Aires</span></span>
+              <span class="comunidad-chip">Rodrigo <span class="chip-lugar">— Gualeguaychú, Entre Ríos</span></span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="comunidad-cta">
+          <h3>¿Qué estás esperando para empezar a practicar?</h3>
+          <a href="hemapa.html" class="btn-primary">
+            Contactarme
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- WHATSAPP -->
     <section class="whatsapp-section">
       <div class="container">
@@ -844,6 +1234,90 @@
           <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
           Sumate a la comunidad
         </a>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+      <div class="container">
+        <div class="faq-header">
+          <p class="section-label">Preguntas frecuentes</p>
+          <h2>Todo lo que necesitás saber sobre el HEMA</h2>
+        </div>
+
+        <div class="faq-list">
+
+          <details class="faq-item">
+            <summary>
+              ¿Qué es el HEMA?
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            </summary>
+            <div class="faq-answer">
+              <p>HEMA (Historical European Martial Arts), también conocido como esgrima histórica, es la reconstrucción de las artes marciales europeas a partir de manuscritos y manuales que enseñaban cómo combatir, desde la Baja Edad Media hasta el siglo XIX. En la práctica, es aprender a pelear con espada larga, sable, rapiera y otras armas históricas, de la forma más cercana posible a como se hacía en la época de su uso, pero de forma segura y con fines recreativos o competitivos.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              ¿Es lo mismo que la recreación histórica?
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            </summary>
+            <div class="faq-answer">
+              <p>No. Alguien que practica HEMA estudia técnicas de combate reales a partir de fuentes históricas, de forma similar a como alguien que practica kendo no es un samurái actuando un papel. El HEMA nació de la investigación académica y la arqueología experimental. Lo que se intenta recrear es la técnica, no la estética de una época en particular.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              ¿En qué se diferencia de la esgrima olímpica?
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            </summary>
+            <div class="faq-answer">
+              <p>La esgrima deportiva u olímpica moderna evolucionó de la esgrima de espada y sable del siglo XIX, donde era común que la aristocracia se batiera a duelo o practicara de forma recreativa. Con el tiempo se establecieron reglas deportivas que optimizaron las técnicas para el desempeño competitivo, dejando de lado la faceta marcial. El HEMA recoge esa faceta marcial y es lo que busca recrear — por eso las armas son mucho más variadas: espada larga, sable militar, rapiera, daga, lucha, armas astadas y más.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              ¿Es peligroso?
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            </summary>
+            <div class="faq-answer">
+              <p>No más que cualquier otro deporte de contacto, siempre que se use el equipo de seguridad adecuado: careta, pechera, guantes y chaqueta para HEMA. Las espadas de entrenamiento son romas y flexibles, diseñadas para reducir el impacto de los golpes.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              ¿Necesito experiencia previa para empezar?
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            </summary>
+            <div class="faq-answer">
+              <p>No. La mayoría de quienes empiezan HEMA no tuvieron ninguna experiencia previa en artes marciales ni esgrima. Solo hace falta ganas de aprender — los clubes enseñan desde cero.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              ¿Dónde puedo practicar HEMA en Argentina?
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            </summary>
+            <div class="faq-answer">
+              <p>Consultá el <a href="hemapa.html">HEMAPA</a>: vas a encontrar un amplio listado de clubes, así como personas interesadas en practicar por su cuenta.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              No hay un club de HEMA cerca mío, ¿qué hago?
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            </summary>
+            <div class="faq-answer">
+              <p>Podés sumarte igual a la comunidad de la CADH y buscar a otros interesados en tu zona a través del <a href="hemapa.html">HEMAPA</a>, para armar un grupo de estudio propio. También hay recursos (libros, canales de YouTube, manuales) para arrancar por tu cuenta mientras encontrás compañeros de entrenamiento — los tenés todos en la sección <a href="recursos.html">Recursos</a> del sitio.</p>
+            </div>
+          </details>
+
+        </div>
       </div>
     </section>
 
