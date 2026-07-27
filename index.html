@@ -658,6 +658,96 @@
       letter-spacing: -0.01em;
     }
 
+    /* ── EVENTOS ── */
+    .eventos-section {
+      padding: var(--space-2xl) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .eventos-header {
+      max-width: 640px;
+      margin-bottom: 32px;
+    }
+
+    .eventos-header h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 28px;
+      line-height: 1.2;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .eventos-header p {
+      font-size: 15px;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+    }
+
+    .eventos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .evento-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .evento-card:hover {
+      border-color: var(--color-border-accent);
+      background: rgba(160,120,255,0.04);
+    }
+
+    .evento-fecha {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      align-self: flex-start;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      border: 1px solid var(--color-border-accent);
+      border-radius: 100px;
+      padding: 4px 12px;
+      margin-bottom: 14px;
+    }
+
+    .evento-card h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 17px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .evento-card p {
+      font-size: 13.5px;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+
+    .evento-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-accent);
+      align-self: flex-start;
+      transition: gap 0.2s;
+    }
+    .evento-link:hover { gap: 10px; }
+
     /* ── WHATSAPP ── */
     .whatsapp-section {
       padding: var(--space-2xl) 0;
@@ -1270,6 +1360,43 @@
             Contactarme
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- EVENTOS -->
+    <section class="eventos-section">
+      <div class="container">
+        <div class="eventos-header">
+          <p class="section-label">Agenda</p>
+          <h2>Lo que se viene</h2>
+          <p>
+            Encuentros, torneos y actividades de HEMA organizados por clubes de la comunidad en Argentina.
+          </p>
+        </div>
+        <div class="eventos-grid">
+          <div class="evento-card">
+            <span class="evento-fecha">📅 15 y 16 de agosto 2026</span>
+            <h3>Torneo Hojas de Plata</h3>
+            <p>
+              El encuentro de esgrima histórica por antonomasia en Argentina. Torneo de esgrima, torneo de corte con sable y arenas abiertas, organizado por el Círculo Cruz del Sur en La Plata. Cupos limitados.
+            </p>
+            <a href="torneo-hojas-de-plata.html" class="evento-link">
+              Ver el torneo
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+          <div class="evento-card">
+            <span class="evento-fecha">🏕️ Encuentro anual</span>
+            <h3>Campamento CADH</h3>
+            <p>
+              Un fin de semana abierto a toda la comunidad, con entrenamientos, sparring, talleres y camaradería. Para practicantes y para quienes recién se quieren acercar al HEMA.
+            </p>
+            <a href="campamento.html" class="evento-link">
+              Ver el campamento
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
         </div>
       </div>
     </section>
