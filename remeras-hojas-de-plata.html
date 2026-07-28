@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Remeras — Mockup</title>
+<title>Remeras Hojas de Plata — CADH</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -397,29 +397,31 @@
   <div class="card" id="orderCard">
     <div class="field">
       <label>Nombre y apellido</label>
-      <input type="text" placeholder="Ej: Juana Pérez">
+      <input type="text" id="fNombre" placeholder="Ej: Juana Pérez">
     </div>
     <div class="row2">
       <div class="field">
         <label>Talle</label>
-        <select>
+        <select id="fTalle">
           <option>S</option>
           <option>M</option>
           <option selected>L</option>
           <option>XL</option>
           <option>XXL</option>
+          <option>XXXL</option>
         </select>
       </div>
       <div class="field">
         <label>Cantidad</label>
-        <input type="text" value="1">
+        <input type="text" id="fCantidad" value="1">
       </div>
     </div>
     <div class="field">
       <label>Contacto (WhatsApp)</label>
-      <input type="tel" placeholder="Ej: 11 2345 6789">
+      <input type="tel" id="fContacto" inputmode="numeric" placeholder="Ej: 1123456789" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
     </div>
-    <button class="btn-primary" onclick="showTransfer()">Confirmar pedido</button>
+    <p id="formError" style="display:none; color:#ff8080; font-size:12px; margin:-6px 0 14px;"></p>
+    <button class="btn-primary" id="btnConfirmar" onclick="confirmarPedido()">Confirmar pedido</button>
   </div>
 
   <!-- Estado 2: datos de transferencia -->
@@ -428,20 +430,22 @@
     <p class="sub" style="margin-bottom:14px;">Transferí <strong style="color:var(--color-text);">$35.000 por unidad</strong> a este alias. El pedido queda pendiente hasta que subas el comprobante.</p>
     <div class="alias-line">
       <strong>club.cruzdelsur.mp</strong>
-      <span class="copy-tag">Copiar</span>
+      <span class="copy-tag" onclick="copiarAlias(this)">Copiar</span>
     </div>
     <div class="reminder">
       <span class="icon" style="color:var(--color-accent); font-size:13px;">ⓘ</span>
       <p><strong>Después de transferir, guardá el comprobante</strong> (captura o PDF) — lo vas a necesitar para subirlo en el siguiente paso.</p>
     </div>
-    <div style="margin-top:14px;">
+    <div style="margin-top:14px;" id="yaTransferiWrap">
       <button class="btn-secondary" onclick="showUpload()">Ya transferí</button>
     </div>
     <div class="upload-area" id="uploadArea">
       <strong>Subí tu comprobante</strong>
       Foto o PDF de la transferencia
       <div style="margin-top:12px;">
-        <button class="btn-primary" onclick="showSuccess()">Subir comprobante</button>
+        <input type="file" id="fComprobante" accept="image/jpeg,image/png,application/pdf" style="display:block; margin:0 auto 12px; color:var(--color-text-muted); font-size:12px;">
+        <button class="btn-primary" id="btnSubir" onclick="subirComprobante()">Subir comprobante</button>
+        <p id="uploadError" style="display:none; color:#ff8080; font-size:12px; margin-top:10px;"></p>
       </div>
     </div>
   </div>
@@ -453,10 +457,110 @@
     <p>El club va a revisar el comprobante y confirmar tu pedido. Te van a escribir por WhatsApp si hace falta algo más.</p>
   </div>
 
-  <p class="mock-note">Mockup estático — sin funcionalidad real, solo para mostrar el flujo visual</p>
+  <p class="mock-note">Torneo Hojas de Plata — pedido gestionado por Club Cruz del Sur</p>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+  // --- Conexión con Supabase ---
+  const SUPABASE_URL = 'https://lyigpgjxopcgqmrvllqs.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_0CIQJSDbQRGH-M9H2w-7JQ_1cU6AEZ-';
+  const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  // Datos del pedido en memoria hasta que se suba el comprobante
+  let pedidoActual = null;
+
+  function copiarAlias(el) {
+    navigator.clipboard.writeText('club.cruzdelsur.mp');
+    const original = el.textContent;
+    el.textContent = 'Copiado ✓';
+    setTimeout(() => { el.textContent = original; }, 1500);
+  }
+
+  function confirmarPedido() {
+    const nombre = document.getElementById('fNombre').value.trim();
+    const talle = document.getElementById('fTalle').value;
+    const cantidad = parseInt(document.getElementById('fCantidad').value, 10) || 1;
+    const contacto = document.getElementById('fContacto').value.trim();
+    const errorEl = document.getElementById('formError');
+
+    if (!nombre || !contacto) {
+      errorEl.textContent = 'Completá tu nombre y un contacto de WhatsApp antes de seguir.';
+      errorEl.style.display = 'block';
+      return;
+    }
+    if (!/^[0-9]{8,15}$/.test(contacto)) {
+      errorEl.textContent = 'El contacto debe ser solo números, sin espacios ni guiones (ej: 1123456789).';
+      errorEl.style.display = 'block';
+      return;
+    }
+    errorEl.style.display = 'none';
+
+    pedidoActual = { nombre, talle, cantidad, contacto };
+
+    document.getElementById('orderCard').style.display = 'none';
+    document.getElementById('transferBox').classList.add('show');
+  }
+
+  function showUpload() {
+    document.getElementById('yaTransferiWrap').style.display = 'none';
+    document.getElementById('uploadArea').classList.add('show');
+  }
+
+  async function subirComprobante() {
+    const fileInput = document.getElementById('fComprobante');
+    const errorEl = document.getElementById('uploadError');
+    const btn = document.getElementById('btnSubir');
+    const file = fileInput.files[0];
+
+    if (!file) {
+      errorEl.textContent = 'Elegí un archivo (foto o PDF) antes de subir.';
+      errorEl.style.display = 'block';
+      return;
+    }
+    errorEl.style.display = 'none';
+    btn.disabled = true;
+    btn.textContent = 'Subiendo...';
+
+    try {
+      // 1. Subir el archivo al bucket de comprobantes
+      const extension = file.name.split('.').pop();
+      const nombreArchivo = `pedido-${Date.now()}-${Math.floor(Math.random() * 10000)}.${extension}`;
+
+      const { error: uploadError } = await supabaseClient
+        .storage
+        .from('comprobantes')
+        .upload(nombreArchivo, file);
+
+      if (uploadError) throw uploadError;
+
+      // 2. Recién ahora se guarda el pedido completo, ya con el comprobante
+      const { error: insertError } = await supabaseClient
+        .from('pedidos_remeras')
+        .insert([{
+          nombre: pedidoActual.nombre,
+          talle: pedidoActual.talle,
+          cantidad: pedidoActual.cantidad,
+          contacto: pedidoActual.contacto,
+          comprobante_url: nombreArchivo,
+          estado_pago: 'comprobante_subido'
+        }]);
+
+      if (insertError) throw insertError;
+
+      document.getElementById('transferBox').classList.remove('show');
+      document.getElementById('successState').classList.add('show');
+
+    } catch (err) {
+      console.error(err);
+      errorEl.textContent = 'Hubo un problema al subir el comprobante. Probá de nuevo en un momento.';
+      errorEl.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Subir comprobante';
+    }
+  }
+
+  // --- Carrusel de imágenes (sin cambios) ---
   let slideIndex = 0;
   function goToSlide(i) {
     slideIndex = i;
@@ -469,18 +573,6 @@
     const total = 2;
     slideIndex = (slideIndex + dir + total) % total;
     goToSlide(slideIndex);
-  }
-
-  function showTransfer() {
-    document.getElementById('orderCard').style.display = 'none';
-    document.getElementById('transferBox').classList.add('show');
-  }
-  function showUpload() {
-    document.getElementById('uploadArea').classList.add('show');
-  }
-  function showSuccess() {
-    document.getElementById('transferBox').classList.remove('show');
-    document.getElementById('successState').classList.add('show');
   }
 </script>
 </body>
