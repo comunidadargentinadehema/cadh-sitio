@@ -491,6 +491,66 @@
       line-height: 1.5;
     }
 
+    /* ── COMUNIDAD (listado completo) ── */
+    .comunidad-completa-section {
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .comunidad-completa-section h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 17px;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .comunidad-categoria { margin-bottom: 24px; }
+    .comunidad-categoria:last-child { margin-bottom: 0; }
+
+    .comunidad-categoria-header {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .comunidad-categoria-header h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--color-text);
+    }
+
+    .comunidad-categoria-header .count {
+      font-size: 12px;
+      color: var(--color-text-muted);
+    }
+
+    .comunidad-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .comunidad-chip {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 5px;
+      font-size: 12.5px;
+      color: var(--color-text);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 100px;
+      padding: 6px 13px;
+    }
+
+    .comunidad-chip .chip-lugar {
+      color: var(--color-text-muted);
+      font-size: 11.5px;
+    }
+
     /* ── REQUISITO ── */
     .requisito-section {
       margin-bottom: 40px;
@@ -765,6 +825,75 @@
               </div>
             </div>
 
+          </div>
+        </div>
+
+        <!-- Comunidad (listado completo) -->
+        <div class="comunidad-completa-section">
+          <h2>¿Quiénes forman parte hoy?</h2>
+
+          <div class="comunidad-categoria">
+            <div class="comunidad-categoria-header">
+              <h3>Clubes y academias</h3>
+              <span class="count">(6)</span>
+            </div>
+            <div class="comunidad-chips">
+              <span class="comunidad-chip">La orden de la ceniza <span class="chip-lugar">— Saavedra, CABA</span></span>
+              <span class="comunidad-chip">Academia Vincere <span class="chip-lugar">— CABA</span></span>
+              <span class="comunidad-chip">Freifechter Mendoza <span class="chip-lugar">— Mendoza</span></span>
+              <span class="comunidad-chip">Cruz del Sur <span class="chip-lugar">— La Plata, Buenos Aires</span></span>
+              <span class="comunidad-chip">Sol del Norte <span class="chip-lugar">— Resistencia, Chaco</span></span>
+              <span class="comunidad-chip">Motus Esgrima <span class="chip-lugar">— Saavedra, CABA</span></span>
+            </div>
+          </div>
+
+          <div class="comunidad-categoria">
+            <div class="comunidad-categoria-header">
+              <h3>Grupos de estudio</h3>
+              <span class="count">(4)</span>
+            </div>
+            <div class="comunidad-chips">
+              <span class="comunidad-chip">Legió X Gemina <span class="chip-lugar">— Olavarría, Buenos Aires</span></span>
+              <span class="comunidad-chip">Kevin <span class="chip-lugar">— Santa Rosa, La Pampa</span></span>
+              <span class="comunidad-chip">Gremio Esgrima Histórica <span class="chip-lugar">— General Roca, Río Negro</span></span>
+              <span class="comunidad-chip">Omar <span class="chip-lugar">— Sierra Colorada, Río Negro</span></span>
+            </div>
+          </div>
+
+          <div class="comunidad-categoria">
+            <div class="comunidad-categoria-header">
+              <h3>Practicantes en solitario</h3>
+              <span class="count">(8)</span>
+            </div>
+            <div class="comunidad-chips">
+              <span class="comunidad-chip">Benjamín <span class="chip-lugar">— Virrey del Pino, Buenos Aires</span></span>
+              <span class="comunidad-chip">Camilo <span class="chip-lugar">— Marcos Paz, Buenos Aires</span></span>
+              <span class="comunidad-chip">Ain <span class="chip-lugar">— Plottier, Neuquén</span></span>
+              <span class="comunidad-chip">Ariel <span class="chip-lugar">— La Plata, Buenos Aires</span></span>
+              <span class="comunidad-chip">Leonel <span class="chip-lugar">— Villa Belgrano, Córdoba</span></span>
+              <span class="comunidad-chip">Juanchi <span class="chip-lugar">— Susana, Santa Fe</span></span>
+              <span class="comunidad-chip">Dante <span class="chip-lugar">— Corrientes Capital</span></span>
+              <span class="comunidad-chip">Bruno <span class="chip-lugar">— La Boca, CABA</span></span>
+            </div>
+          </div>
+
+          <div class="comunidad-categoria">
+            <div class="comunidad-categoria-header">
+              <h3>Interesados en empezar</h3>
+              <span class="count">(10)</span>
+            </div>
+            <div class="comunidad-chips">
+              <span class="comunidad-chip">Esteban <span class="chip-lugar">— Acassuso, Buenos Aires</span></span>
+              <span class="comunidad-chip">Daniel P. <span class="chip-lugar">— Mariano Acosta, Buenos Aires</span></span>
+              <span class="comunidad-chip">Federico <span class="chip-lugar">— Rosario, Santa Fe</span></span>
+              <span class="comunidad-chip">Joaquín G. <span class="chip-lugar">— Salta Capital</span></span>
+              <span class="comunidad-chip">Nicolás <span class="chip-lugar">— San Francisco Solano, Quilmes</span></span>
+              <span class="comunidad-chip">Joaquín V. <span class="chip-lugar">— Paso de los Libres, Corrientes</span></span>
+              <span class="comunidad-chip">Daniel Z. <span class="chip-lugar">— Quilmes, Buenos Aires</span></span>
+              <span class="comunidad-chip">Julieta <span class="chip-lugar">— Campana, Buenos Aires</span></span>
+              <span class="comunidad-chip">Rodrigo <span class="chip-lugar">— Gualeguaychú, Entre Ríos</span></span>
+              <span class="comunidad-chip">Iñaki <span class="chip-lugar">— Córdoba Capital</span></span>
+            </div>
           </div>
         </div>
 
