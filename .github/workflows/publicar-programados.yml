@@ -1,11 +1,12 @@
 name: Publicar artículos programados
 
-# Cada 5 minutos mira si hay algún artículo del repo privado "cadh-programados"
+# Cada 10 minutos mira si hay algún artículo del repo privado "cadh-programados"
 # cuya hora ya llegó y, si lo hay, lo publica en el sitio.
-# GitHub puede demorar estas corridas unos minutos cuando hay mucha carga.
+# Los minutos son "raros" (7, 17, 27...) a propósito: GitHub descarta o demora mucho
+# las corridas programadas que caen en minutos redondos (:00, :05...) por la carga.
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "7,17,27,37,47,57 * * * *"
   workflow_dispatch:   # permite correrlo a mano desde la pestaña Actions
 
 permissions:
