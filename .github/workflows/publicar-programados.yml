@@ -1,0 +1,49 @@
+name: Publicar artículos programados
+
+# Cada 5 minutos mira si hay algún artículo del repo privado "cadh-programados"
+# cuya hora ya llegó y, si lo hay, lo publica en el sitio.
+# GitHub puede demorar estas corridas unos minutos cuando hay mucha carga.
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:   # permite correrlo a mano desde la pestaña Actions
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: publicar-programados
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Traer el sitio
+        uses: actions/checkout@v4
+
+      - name: Traer los artículos programados (repo privado, solo lectura)
+        uses: actions/checkout@v4
+        with:
+          repository: comunidadargentinadehema/cadh-programados
+          token: ${{ secrets.PROGRAMADOS_TOKEN }}
+          path: _programados
+          persist-credentials: false
+
+      - name: Publicar los que ya les toca
+        id: pub
+        run: python3 tools/publicar.py --origen _programados --destino .
+
+      - name: Guardar cambios y publicar el sitio
+        if: steps.pub.outputs.publicado == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "CADH publicador"
+          git config user.email "actions@users.noreply.github.com"
+          git add articulos img sitemap.xml
+          git commit -m "Publicar artículo programado: ${{ steps.pub.outputs.lista }}"
+          git push || (git pull --rebase origin main && git push)
+          # Pide a GitHub Pages que reconstruya el sitio ya mismo
+          gh api -X POST "repos/${{ github.repository }}/pages/builds" || true
