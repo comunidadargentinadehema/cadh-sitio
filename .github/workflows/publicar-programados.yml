@@ -6,7 +6,7 @@ name: Publicar artículos programados
 # las corridas programadas que caen en minutos redondos (:00, :05...) por la carga.
 on:
   schedule:
-    - cron: "7,17,27,37,47,57 * * * *"
+    - cron: "9,19,29,39,49,59"
   workflow_dispatch:   # permite correrlo a mano desde la pestaña Actions
 
 permissions:
